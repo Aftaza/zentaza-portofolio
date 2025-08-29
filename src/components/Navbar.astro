@@ -1,0 +1,182 @@
+---
+import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { Menu, X } from 'lucide-react';
+---
+
+<nav class="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="text-xl font-bold">Zentaza</a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a
+                        href="/"
+                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        class:list={{
+                            'bg-accent text-accent-foreground': Astro.url.pathname === '/',
+                            'text-foreground': Astro.url.pathname !== '/',
+                        }}
+                    >
+                        Home
+                    </a>
+                    <a
+                        href="/about"
+                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        class:list={{
+                            'bg-accent text-accent-foreground': Astro.url.pathname === '/about',
+                            'text-foreground': Astro.url.pathname !== '/about',
+                        }}
+                    >
+                        About
+                    </a>
+                    <a
+                        href="/portfolio"
+                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        class:list={{
+                            'bg-accent text-accent-foreground': Astro.url.pathname === '/portfolio',
+                            'text-foreground': Astro.url.pathname !== '/portfolio',
+                        }}
+                    >
+                        Portfolio
+                    </a>
+                    <a
+                        href="/blog"
+                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        class:list={{
+                            'bg-accent text-accent-foreground': Astro.url.pathname === '/blog',
+                            'text-foreground': Astro.url.pathname !== '/blog',
+                        }}
+                    >
+                        Blog
+                    </a>
+                    <a
+                        href="/contact"
+                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        class:list={{
+                            'bg-accent text-accent-foreground': Astro.url.pathname === '/contact',
+                            'text-foreground': Astro.url.pathname !== '/contact',
+                        }}
+                    >
+                        Contact
+                    </a>
+                </div>
+            </div>
+
+            <!-- Theme Toggle and Mobile menu button -->
+            <div class="flex items-center">
+                <ThemeToggle className="mr-2 cursor-pointer" client:idle />
+                <div class="md:hidden">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        data-mobile-menu-button
+                        aria-label="Toggle menu"
+                    >
+                        <Menu className="h-6 w-6" />
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div data-mobile-menu class="md:hidden hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+                href="/"
+                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                class:list={{
+                    'bg-accent text-accent-foreground': Astro.url.pathname === '/',
+                    'text-foreground': Astro.url.pathname !== '/',
+                }}
+                data-mobile-menu-item
+            >
+                Home
+            </a>
+            <a
+                href="/about"
+                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                class:list={{
+                    'bg-accent text-accent-foreground': Astro.url.pathname === '/about',
+                    'text-foreground': Astro.url.pathname !== '/about',
+                }}
+                data-mobile-menu-item
+            >
+                About
+            </a>
+            <a
+                href="/portfolio"
+                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                class:list={{
+                    'bg-accent text-accent-foreground': Astro.url.pathname === '/portfolio',
+                    'text-foreground': Astro.url.pathname !== '/portfolio',
+                }}
+                data-mobile-menu-item
+            >
+                Portfolio
+            </a>
+            <a
+                href="/blog"
+                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                class:list={{
+                    'bg-accent text-accent-foreground': Astro.url.pathname === '/blog',
+                    'text-foreground': Astro.url.pathname !== '/blog',
+                }}
+                data-mobile-menu-item
+            >
+                Blog
+            </a>
+            <a
+                href="/contact"
+                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                class:list={{
+                    'bg-accent text-accent-foreground': Astro.url.pathname === '/contact',
+                    'text-foreground': Astro.url.pathname !== '/contact',
+                }}
+                data-mobile-menu-item
+            >
+                Contact
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Client-side JavaScript for mobile menu toggle
+    if (typeof document !== 'undefined') {
+        const menuButton = document.querySelector('[data-mobile-menu-button]');
+        const menu = document.querySelector('[data-mobile-menu]');
+        const menuItems = document.querySelectorAll('[data-mobile-menu-item]');
+
+        if (menuButton && menu) {
+            menuButton.addEventListener('click', () => {
+                const isOpen = !menu.classList.contains('hidden');
+                menu.classList.toggle('hidden', isOpen);
+                const menuIcon = menuButton.querySelector('svg');
+                if (menuIcon) {
+                    menuIcon.outerHTML = isOpen
+                        ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>'
+                        : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+                }
+            });
+
+            // Close menu when clicking on a menu item
+            menuItems.forEach((item) => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    const menuIcon = menuButton.querySelector('svg');
+                    if (menuIcon) {
+                        menuIcon.outerHTML =
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>';
+                    }
+                });
+            });
+        }
+    }
+</script>

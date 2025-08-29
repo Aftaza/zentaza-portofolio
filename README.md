@@ -1,13 +1,93 @@
-# Astro with Tailwind
+# Zentaza Portfolio Website
 
-```sh
-npm create astro@latest -- --template with-tailwindcss
+A modern, responsive portfolio website built with Astro.js, TailwindCSS, and shadcn/ui components.
+
+## Features
+
+- **Modern UI**: Clean, responsive design with dark/light mode support
+- **Performance**: Fast loading with Astro's static site generation
+- **SEO Optimized**: Meta tags, sitemap, and robots.txt included
+- **Interactive Components**: Smooth animations and transitions
+- **Cross-browser Compatible**: Works on all modern browsers
+
+## Tech Stack
+
+- **Framework**: [Astro.js](https://astro.build/)
+- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: Vercel, Netlify, or Cloudflare Pages
+
+## Pages
+
+1. **Home** - Hero section with introduction and call-to-action
+2. **About** - Personal bio, experience timeline, and skills
+3. **Portfolio** - Project showcase with category filtering
+4. **Blog** - Articles with search and filtering capabilities
+5. **Contact** - Contact form and information
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── layouts/        # Page layouts
+├── pages/          # Page routes
+├── lib/            # Utility functions
+├── styles/         # Global styles
+public/
+├── favicon.svg     # Favicon
+├── cv.pdf          # Resume/CV
+├── sitemap.xml     # SEO sitemap
+├── robots.txt      # SEO robots file
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+## Customization
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+1. **Content**: Update content in the `src/pages/` directory
+2. **Styling**: Modify Tailwind classes or update `src/styles/global.css`
+3. **Components**: Customize UI components in `src/components/`
+4. **SEO**: Update meta tags in `src/layouts/MainLayout.astro`
 
-For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+## Deployment
+
+This site can be deployed to:
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://netlify.com/)
+- [Cloudflare Pages](https://pages.cloudflare.com/)
+
+Simply connect your Git repository to your preferred platform and follow their deployment instructions.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

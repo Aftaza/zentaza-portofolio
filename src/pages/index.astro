@@ -1,27 +1,84 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import ButtonAstro from '../components/Button.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 import { Button } from '@/components/ui/button';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import { ArrowRight } from 'lucide-react';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
+  <!-- Hero Section -->
+  <section class="py-20 md:py-32">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+        Hi, I'm <span class="text-primary">Zentaza</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in delay-100">
+        Fullstack Developer specializing in Software Engineering, Data Science/AI, Cybersecurity, and IoT
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
+        <Button asChild size="lg">
+          <a href="/portfolio">
+            View My Work
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
+        </Button>
+        <Button asChild variant="outline" size="lg">
+          <a href="/contact">
+            Get In Touch
+          </a>
+        </Button>
+      </div>
+    </div>
+  </section>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center gap-2">
-			<ButtonAstro>Tailwind Button in Astro!</ButtonAstro>
-            <Button variant='destructive'>Shadcn Button</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+  <!-- Skills Preview -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">What I Do</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-xl font-semibold mb-2">Software Engineering</h3>
+          <p class="text-muted-foreground">
+            Building robust and scalable applications with modern technologies
+          </p>
+        </div>
+        <div class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">📈</div>
+          <h3 class="text-xl font-semibold mb-2">Data Science & AI</h3>
+          <p class="text-muted-foreground">
+            Leveraging data to create intelligent solutions and insights
+          </p>
+        </div>
+        <div class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-xl font-semibold mb-2">Cybersecurity</h3>
+          <p class="text-muted-foreground">
+            Protecting digital assets with secure coding practices
+          </p>
+        </div>
+        <div class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🌐</div>
+          <h3 class="text-xl font-semibold mb-2">IoT Solutions</h3>
+          <p class="text-muted-foreground">
+            Connecting devices and creating smart ecosystem solutions
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Interested in Working Together?</h2>
+      <p class="text-muted-foreground mb-8 max-w-2xl mx-auto">
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+      </p>
+      <Button asChild size="lg">
+        <a href="/contact">
+          Let's Connect
+        </a>
+      </Button>
+    </div>
+  </section>
+</MainLayout>
