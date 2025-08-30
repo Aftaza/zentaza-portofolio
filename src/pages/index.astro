@@ -3,6 +3,7 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import HeroProfileCard from '@/components/ProfileCard';
+import SkillPreview from '@/components/Skillcard'
 ---
 
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
@@ -41,44 +42,7 @@ import HeroProfileCard from '@/components/ProfileCard';
     <section class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">What I Do</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div
-                    class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
-                >
-                    <div class="text-4xl mb-4">💻</div>
-                    <h3 class="text-xl font-semibold mb-2">Software Engineering</h3>
-                    <p class="text-muted-foreground">
-                        Building robust and scalable applications with modern technologies
-                    </p>
-                </div>
-                <div
-                    class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
-                >
-                    <div class="text-4xl mb-4">📈</div>
-                    <h3 class="text-xl font-semibold mb-2">Data Science & AI</h3>
-                    <p class="text-muted-foreground">
-                        Leveraging data to create intelligent solutions and insights
-                    </p>
-                </div>
-                <div
-                    class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
-                >
-                    <div class="text-4xl mb-4">🔒</div>
-                    <h3 class="text-xl font-semibold mb-2">Cybersecurity</h3>
-                    <p class="text-muted-foreground">
-                        Protecting digital assets with secure coding practices
-                    </p>
-                </div>
-                <div
-                    class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
-                >
-                    <div class="text-4xl mb-4">🌐</div>
-                    <h3 class="text-xl font-semibold mb-2">IoT Solutions</h3>
-                    <p class="text-muted-foreground">
-                        Connecting devices and creating smart ecosystem solutions
-                    </p>
-                </div>
-            </div>
+            <SkillPreview client:visible />
         </div>
     </section>
 

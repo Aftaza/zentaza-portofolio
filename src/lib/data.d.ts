@@ -8,3 +8,15 @@ export interface ProfileCardProps {
     description?: string;
     tags?: string[];
 }
+
+export interface SkillCard {
+    id: string;
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+    features: Array<{
+        icon: React.ReactNode;
+        text: string;
+    }>;
+    glowColor: string;
+}
