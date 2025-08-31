@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '../lib/utils';
 
-// Grid Background Component
+// Grid Background Component - Modified for section background
 export interface GridBackgroundProps extends React.HTMLProps<HTMLDivElement> {
     gridSize?: number;
     gridColor?: string;
@@ -9,6 +9,8 @@ export interface GridBackgroundProps extends React.HTMLProps<HTMLDivElement> {
     showFade?: boolean;
     fadeIntensity?: number;
     children?: React.ReactNode;
+    // New props for section usage
+    asSectionBackground?: boolean;
 }
 
 export const GridBackground = ({
@@ -19,6 +21,7 @@ export const GridBackground = ({
     darkGridColor = '#262626',
     showFade = true,
     fadeIntensity = 20,
+    asSectionBackground = false,
     ...props
 }: GridBackgroundProps) => {
     const [currentGridColor, setCurrentGridColor] = useState(gridColor);
@@ -47,139 +50,52 @@ export const GridBackground = ({
         };
     }, [gridColor, darkGridColor]);
 
+    // Default to section usage for cleaner implementation
+    const containerClasses = cn(
+        'relative bg-white dark:bg-black overflow-hidden',
+        className
+    );
+
     return (
-        <div
-            className={cn(
-                'absolute flex h-[50rem] w-full items-center justify-center bg-white dark:bg-black',
-                className
-            )}
-            {...props}
-        >
+        <div className={containerClasses} {...props}>
+            {/* Grid Pattern Background */}
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 pointer-events-none"
                 style={{
-                    backgroundSize: gridSize + 'px ' + gridSize + 'px', // String concatenation
+                    backgroundSize: gridSize + 'px ' + gridSize + 'px',
                     backgroundImage:
                         'linear-gradient(to right, ' +
                         currentGridColor +
                         ' 1px, transparent 1px), ' +
                         'linear-gradient(to bottom, ' +
                         currentGridColor +
-                        ' 1px, transparent 1px)', // String concatenation
+                        ' 1px, transparent 1px)',
                 }}
             />
 
+            {/* Fade Effect */}
             {showFade && (
                 <div
-                    className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white dark:bg-black"
+                    className="pointer-events-none absolute inset-0 bg-background"
                     style={{
                         maskImage:
                             'radial-gradient(ellipse at center, transparent ' +
                             fadeIntensity +
-                            '%, black)', // String concatenation
+                            '%, black)',
                         WebkitMaskImage:
                             'radial-gradient(ellipse at center, transparent ' +
                             fadeIntensity +
-                            '%, black)', // String concatenation
+                            '%, black)',
                     }}
                 />
             )}
 
-            <div className="relative z-20">{children}</div>
+            {/* Content */}
+            <div className="relative z-10 w-full h-full">
+                {children}
+            </div>
         </div>
     );
 };
 
-// Dot Background Component
-export interface DotBackgroundProps extends React.HTMLProps<HTMLDivElement> {
-    dotSize?: number;
-    dotColor?: string;
-    darkDotColor?: string;
-    spacing?: number;
-    showFade?: boolean;
-    fadeIntensity?: number;
-    children?: React.ReactNode;
-}
-
-export const DotBackground = ({
-    className,
-    children,
-    dotSize = 1,
-    dotColor = '#000',
-    darkDotColor = '#fff',
-    spacing = 20,
-    showFade = true,
-    fadeIntensity = 20,
-    ...props
-}: DotBackgroundProps) => {
-    const [currentDotColor, setCurrentDotColor] = useState(dotColor);
-
-    useEffect(() => {
-        const prefersDarkMode =
-            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDarkModeActive =
-            document.documentElement.classList.contains('dark') || prefersDarkMode;
-        setCurrentDotColor(isDarkModeActive ? darkDotColor : dotColor);
-
-        const observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.attributeName === 'class') {
-                    const updatedIsDarkModeActive =
-                        document.documentElement.classList.contains('dark');
-                    setCurrentDotColor(updatedIsDarkModeActive ? darkDotColor : dotColor);
-                }
-            });
-        });
-
-        observer.observe(document.documentElement, { attributes: true });
-
-        return function () {
-            return observer.disconnect();
-        };
-    }, [dotColor, darkDotColor]);
-
-    return (
-        <div
-            className={cn(
-                'absolute flex h-[50rem] w-full items-center justify-center bg-white dark:bg-black',
-                className
-            )}
-            {...props}
-        >
-            <div
-                className="absolute inset-0"
-                style={{
-                    backgroundSize: spacing + 'px ' + spacing + 'px', // String concatenation
-                    backgroundImage:
-                        'radial-gradient(' +
-                        currentDotColor +
-                        ' ' +
-                        dotSize +
-                        'px, transparent ' +
-                        dotSize +
-                        'px)', // String concatenation
-                }}
-            />
-
-            {showFade && (
-                <div
-                    className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white dark:bg-black"
-                    style={{
-                        maskImage:
-                            'radial-gradient(ellipse at center, transparent ' +
-                            fadeIntensity +
-                            '%, black)', // String concatenation
-                        WebkitMaskImage:
-                            'radial-gradient(ellipse at center, transparent ' +
-                            fadeIntensity +
-                            '%, black)', // String concatenation
-                    }}
-                />
-            )}
-
-            <div className="relative z-20">{children}</div>
-        </div>
-    );
-};
-
-export default { GridBackground, DotBackground };
+export default GridBackground;

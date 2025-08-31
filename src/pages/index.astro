@@ -6,11 +6,20 @@ import HeroProfileCard from '@/components/ProfileCard';
 import SkillPreview from '@/components/Skillcard';
 import { AuroraTextEffect } from '@/components/Auroratext';
 import { TypeAnimation } from 'react-type-animation';
+import { GridBackground } from '@/components/GridBackground';
 ---
 
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
-    <!-- Hero Section -->
-    <section class="py-10 md:py-12">
+    <!-- Hero Section with Grid Background -->
+    <GridBackground 
+        className="w-full py-10 md:py-12"
+        gridSize={40}
+        showFade={true}
+        fadeIntensity={0}
+        gridColor="#e5e7eb"
+        darkGridColor="#374151"
+        client:visible
+    >
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="flex-1 text-center lg:text-left animate-fade-in">
@@ -34,9 +43,8 @@ import { TypeAnimation } from 'react-type-animation';
                     <div class="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start">
                         <TypeAnimation
                             sequence={[
-                                // Same substring at the start will only be typed out once, initially
                                 'Fullstack Developer specializing in Software Engineering',
-                                1000, // wait 1s before replacing "Mice" with "Hamsters"
+                                1000,
                                 'Fullstack Developer specializing in Data Science/AI',
                                 1000,
                                 'Fullstack Developer specializing in Cybersecurity',
@@ -53,10 +61,8 @@ import { TypeAnimation } from 'react-type-animation';
                     </div>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                         <Button size="lg" variant='shine' onClick={() => window.location.href = '/portfolio'}>
-                            
-                                View My Work
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            
+                            View My Work
+                            <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                         <Button variant="outline" size="lg" onClick={() => window.location.href = '/contact'}>
                             Get In Touch
@@ -68,7 +74,7 @@ import { TypeAnimation } from 'react-type-animation';
                 </div>
             </div>
         </div>
-    </section>
+    </GridBackground>
 
     <!-- Skills Preview -->
     <section class="py-16">
