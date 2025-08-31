@@ -4,14 +4,19 @@ import {
     TbBrain,
     TbShieldLock,
     TbRouter,
-    TbBrandReact,
-    TbDatabase,
+    TbDeviceMobileCode,
+    TbApi,
     TbChartDots3,
     TbBrandPython,
     TbBug,
     TbCloudLock,
     TbCpu2,
     TbCloudDataConnection,
+    TbDatabaseCog,
+    TbServerCog,
+    TbWorldCode,
+    TbFileDatabase,
+    TbShieldCheckeredFilled
 } from 'react-icons/tb';
 import type { SkillCard } from '@/lib/data';
 import { Badge } from './ui/badge';
@@ -27,11 +32,14 @@ const SkillPreview: React.FC = () => {
             id: 'fullstack',
             title: 'Fullstack Software Engineer',
             description:
-                'Membangun aplikasi web end-to-end yang tangguh, dari antarmuka pengguna interaktif hingga arsitektur backend yang scalable.',
+                'Building robust end-to-end applications, from interactive user interfaces to scalable backend architectures.',
             icon: <TbCode className="w-6 h-6" />,
             features: [
-                { icon: <TbBrandReact className="w-4 h-4" />, text: 'React/Next.js' },
-                { icon: <TbDatabase className="w-4 h-4" />, text: 'MySql/MongoDB' },
+                { icon: <TbWorldCode className="w-4 h-4" />, text: 'Web App' },
+                { icon: <TbDeviceMobileCode className="w-4 h-4" />, text: 'Mobile App' },
+                { icon: <TbApi className="w-4 h-4" />, text: 'Backend' },
+                { icon: <TbDatabaseCog className="w-4 h-4" />, text: 'Database' },
+                { icon: <TbServerCog className="w-4 h-4" />, text: 'DevOps' },
             ],
             glowColor: '#3b82f6', // Biru
         },
@@ -39,10 +47,11 @@ const SkillPreview: React.FC = () => {
             id: 'data-ai',
             title: 'Data Science & AI Engineer',
             description:
-                'Mengembangkan model machine learning dan solusi AI, mulai dari analisis data hingga implementasi model di lingkungan produksi.',
+                'Developing machine learning models and AI solutions, from data analysis to model implementation in production environments.',
             icon: <TbBrain className="w-6 h-6" />,
             features: [
                 { icon: <TbBrandPython className="w-4 h-4" />, text: 'Pandas, Scikit' },
+                { icon: <TbFileDatabase className="w-4 h-4" />, text: 'Big Data' },
                 { icon: <TbChartDots3 className="w-4 h-4" />, text: 'ML Models' },
             ],
             glowColor: '#f97316', // Oranye
@@ -51,10 +60,11 @@ const SkillPreview: React.FC = () => {
             id: 'cybersecurity',
             title: 'Cybersecurity',
             description:
-                'Melindungi infrastruktur digital dengan analisis kerentanan, penetration testing, dan implementasi protokol keamanan.',
+                'Protecting digital infrastructure with vulnerability analysis, penetration testing, and security protocol implementation.',
             icon: <TbShieldLock className="w-6 h-6" />,
             features: [
-                { icon: <TbBug className="w-4 h-4" />, text: 'Ethical Hacking & Pentesting' },
+                { icon: <TbBug className="w-4 h-4" />, text: 'Ethical Hacking' },
+                { icon: <TbShieldCheckeredFilled className="w-4 h-4" />, text: 'Pentesting' },
                 { icon: <TbCloudLock className="w-4 h-4" />, text: 'Network & Cloud Security' },
             ],
             glowColor: '#ef4444', // Merah
@@ -63,7 +73,7 @@ const SkillPreview: React.FC = () => {
             id: 'iot',
             title: 'IoT Engineer',
             description:
-                'Merancang dan membangun ekosistem perangkat terhubung, mengintegrasikan hardware, firmware, dan platform cloud.',
+                'Designing and building connected device ecosystems, integrating hardware, firmware, and cloud platforms.',
             icon: <TbRouter className="w-6 h-6" />,
             features: [
                 { icon: <TbCpu2 className="w-4 h-4" />, text: 'Microcontrollers (ESP32)' },
@@ -155,12 +165,12 @@ const SkillPreview: React.FC = () => {
             </p>
 
             {/* Features */}
-            <div className="flex justify-start gap-2 items-center">
+            <div className="flex flex-wrap gap-2">
                 {card.features.map((feature, index) => (
                     <Badge
                         variant="outline"
                         key={index}
-                        className="flex items-center gap-3 text-gray-500"
+                        className="flex items-center gap-2 px-3 py-1.5"
                     >
                         <div className="text-muted-foreground">{feature.icon}</div>
                         <span className="text-xs font-medium text-muted-foreground">
