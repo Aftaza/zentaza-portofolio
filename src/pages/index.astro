@@ -1,6 +1,6 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import HeroProfileCard from '@/components/ProfileCard';
 import SkillPreview from '@/components/Skillcard';
@@ -11,7 +11,7 @@ import { GridBackground } from '@/components/GridBackground';
 
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
     <!-- Hero Section with Grid Background -->
-    <GridBackground 
+    <GridBackground
         className="w-full py-10 md:py-12"
         gridSize={40}
         showFade={true}
@@ -25,13 +25,12 @@ import { GridBackground } from '@/components/GridBackground';
                 <div class="flex-1 text-center lg:text-left animate-fade-in">
                     <div class="flex items-start gap-3 mb-6">
                         <span class="text-4xl md:text-6xl text-start font-bold">Hi, I'm</span>
-                        <AuroraText
-                            text="Zentaza"
-                            client:visible
-                        />
+                        <AuroraText text="Zentaza" client:visible />
                     </div>
                     <!-- Fixed height container for TypeAnimation -->
-                    <div class="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start">
+                    <div
+                        class="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start"
+                    >
                         <TypeAnimation
                             sequence={[
                                 'Fullstack Developer specializing in Software Engineering',
@@ -45,19 +44,31 @@ import { GridBackground } from '@/components/GridBackground';
                             ]}
                             wrapper="p"
                             speed={50}
-                            className='text-2xl md:text-3xl text-muted-foreground max-w-2xl leading-tight'
+                            className="text-2xl md:text-3xl text-muted-foreground max-w-2xl leading-tight"
                             repeat={Infinity}
                             client:visible
                         />
                     </div>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <Button size="lg" variant='shine' onClick={() => window.location.href = '/portfolio'}>
+                        <a
+                            href="/portfolio"
+                            class:list={[
+                                buttonVariants({ variant: 'shine', size: 'lg' }),
+                                'flex items-center', // pastikan class flex ditambahkan jika perlu
+                            ]}
+                        >
                             View My Work
                             <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                        <Button variant="outline" size="lg" onClick={() => window.location.href = '/contact'}>
-                            Get In Touch
-                        </Button>
+                        </a>
+                        <a
+                            href="/contact"
+                            class:list={[
+                                buttonVariants({ variant: 'outline', size: 'lg' }),
+                                'flex items-center', // pastikan class flex ditambahkan jika perlu
+                            ]}
+                        >
+                            Get in Touch
+                        </a>
                     </div>
                 </div>
                 <div class="flex-1 w-full animate-fade-in delay-100">

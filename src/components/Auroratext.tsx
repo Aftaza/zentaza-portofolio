@@ -219,7 +219,7 @@ export const InteractiveAuroraText = ({
     useAuroraStyles(); // Auto-inject styles
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setMousePos({
             x: ((e.clientX - rect.left) / rect.width) * 100,
