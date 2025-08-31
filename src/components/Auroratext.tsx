@@ -1,179 +1,268 @@
-import React from 'react';
-import { cn } from '../lib/utils'; // Assuming 'cn' is a utility for merging class names
+// AuroraText.jsx
+import React, { useState, useEffect } from 'react';
 
-export interface AuroraTextEffectProps {
-    text: string;
-    className?: string;
-    textClassName?: string;
-    fontSize?: string;
-    colors?: {
-        first?: string;
-        second?: string;
-        third?: string;
-        fourth?: string;
-    };
-    blurAmount?:
-        | 'blur-none'
-        | 'blur-sm'
-        | 'blur-md'
-        | 'blur-lg'
-        | 'blur-xl'
-        | 'blur-2xl'
-        | 'blur-3xl'
-        | string;
-    animationSpeed?: {
-        border?: number;
-        first?: number;
-        second?: number;
-        third?: number;
-        fourth?: number;
-    };
-}
+// Method 1: Inject CSS ke head secara otomatis
+const injectAuroraStyles = () => {
+    const styleId = 'aurora-text-styles';
 
-export function AuroraTextEffect({
-    text,
-    className,
-    textClassName,
-    fontSize = 'clamp(3rem, 8vw, 7rem)',
-    colors = {
-        first: 'bg-cyan-400',
-        second: 'bg-yellow-400',
-        third: 'bg-green-400',
-        fourth: 'bg-purple-500',
-    },
-    blurAmount = 'blur-lg',
-    animationSpeed = {
-        border: 6,
-        first: 5,
-        second: 5,
-        third: 3,
-        fourth: 13,
-    },
-}: AuroraTextEffectProps) {
-    // Define keyframes as a style object
-    const keyframes = `
-    @keyframes aurora-1 {
-      0% { top: 0; right: 0; }
-      50% { top: 100%; right: 75%; }
-      75% { top: 100%; right: 25%; }
-      100% { top: 0; right: 0; }
+    // Cek apakah style sudah ada
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+    @keyframes gradient-x {
+      0%, 100% {
+        background-size: 200% 200%;
+        background-position: left center;
+      }
+      50% {
+        background-size: 200% 200%;
+        background-position: right center;
+      }
     }
-    @keyframes aurora-2 {
-      0% { top: -50%; left: 0%; }
-      60% { top: 100%; left: 75%; }
-      85% { top: 100%; left: 25%; }
-      100% { top: -50%; left: 0%; }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
     }
-    @keyframes aurora-3 {
-      0% { bottom: 0; left: 0; }
-      40% { bottom: 100%; left: 75%; }
-      65% { bottom: 40%; left: 50%; }
-      100% { bottom: 0; left: 0; }
+    
+    @keyframes aurora-pulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
     }
-    @keyframes aurora-4 {
-      0% { bottom: -50%; right: 0; }
-      50% { bottom: 0%; right: 40%; }
-      90% { bottom: 50%; right: 25%; }
-      100% { bottom: -50%; right: 0; }
+    
+    @keyframes floating-particles {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20px) rotate(360deg);
+        opacity: 0;
+      }
     }
-    @keyframes aurora-border {
-      0% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
-      25% { border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%; }
-      50% { border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%; }
-      75% { border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%; }
-      100% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+    
+    .animate-gradient-x {
+      animation: gradient-x 3s ease infinite;
+      background-size: 200% 200%;
+    }
+    
+    .animate-shimmer {
+      animation: shimmer 2s ease-in-out infinite;
+      background-size: 200% 100%;
+    }
+    
+    .animate-aurora-pulse {
+      animation: aurora-pulse 2s ease-in-out infinite;
+    }
+    
+    .animate-floating-particles {
+      animation: floating-particles 3s ease-in-out infinite;
     }
   `;
 
+    document.head.appendChild(style);
+};
+
+// Hook untuk auto-inject styles
+const useAuroraStyles = () => {
+    useEffect(() => {
+        injectAuroraStyles();
+
+        // Cleanup function (opsional)
+        return () => {
+            const existingStyle = document.getElementById('aurora-text-styles');
+            if (existingStyle) {
+                // Hanya hapus jika tidak ada komponen aurora lain yang aktif
+                // existingStyle.remove();
+            }
+        };
+    }, []);
+};
+
+// Komponen Aurora Text
+export const AuroraText = ({
+    text = 'Aurora Text',
+    className = '',
+    size = 'text-6xl',
+    speed = 'normal',
+}) => {
+    useAuroraStyles(); // Auto-inject styles
+
+    const animationDuration = speed === 'slow' ? '4s' : speed === 'fast' ? '2s' : '3s';
+
     return (
-        <div
-            className={cn(
-                // Updated to support light and dark modes
-                'bg-background flex items-center justify-center overflow-hidden',
-                className
-            )}
-        >
-            <style>{keyframes /* This injects the keyframes into the DOM */}</style>
-            <div className="text-center">
-                <h1
-                    className={cn(
-                        // Added theme-aware text color for visibility
-                        'font-extrabold tracking-tight relative overflow-hidden text-black dark:text-white ',
-                        textClassName
-                    )}
-                    style={{ fontSize }}
+        <div className={`relative inline-block ${className}`}>
+            {/* Background glow effect */}
+            <div className="absolute inset-0 blur-lg opacity-30">
+                <span
+                    className={`${size} font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-aurora-pulse`}
+                    style={{ animationDuration }}
                 >
                     {text}
-                    <div
-                        // Switched blend mode based on theme to preserve the effect
-                        className="absolute inset-0 z-10 mix-blend-lighten dark:mix-blend-darken pointer-events-none"
-                    >
-                        {/* First Aurora Layer */}
-                        <div
-                            className={cn(
-                                'absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay',
-                                colors.first || 'bg-cyan-400',
-                                blurAmount
-                            )}
-                            style={{
-                                animationName: 'aurora-border, aurora-1',
-                                animationDuration: `${animationSpeed.border}s, ${animationSpeed.first}s`,
-                                animationTimingFunction: 'ease-in-out, ease-in-out',
-                                animationIterationCount: 'infinite, infinite',
-                                animationDirection: 'normal, alternate',
-                            }}
-                        />
+                </span>
+            </div>
 
-                        {/* Second Aurora Layer */}
-                        <div
-                            className={cn(
-                                'absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay',
-                                colors.second,
-                                blurAmount
-                            )}
-                            style={{
-                                animationName: 'aurora-border, aurora-2',
-                                animationDuration: `${animationSpeed.border}s, ${animationSpeed.second}s`,
-                                animationTimingFunction: 'ease-in-out, ease-in-out',
-                                animationIterationCount: 'infinite, infinite',
-                                animationDirection: 'normal, alternate',
-                            }}
-                        />
+            {/* Main text with aurora animation */}
+            <span
+                className={`
+          ${size} font-bold relative z-10
+          bg-gradient-to-r from-purple-400 via-pink-400 via-blue-400 to-cyan-400 
+          bg-clip-text text-transparent
+          animate-gradient-x
+          drop-shadow-lg
+        `}
+                style={{ animationDuration }}
+            >
+                {text}
+            </span>
 
-                        {/* Third Aurora Layer */}
-                        <div
-                            className={cn(
-                                'absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay',
-                                colors.third,
-                                blurAmount
-                            )}
-                            style={{
-                                animationName: 'aurora-border, aurora-3',
-                                animationDuration: `${animationSpeed.border}s, ${animationSpeed.third}s`,
-                                animationTimingFunction: 'ease-in-out, ease-in-out',
-                                animationIterationCount: 'infinite, infinite',
-                                animationDirection: 'normal, alternate',
-                            }}
-                        />
-
-                        {/* Fourth Aurora Layer */}
-                        <div
-                            className={cn(
-                                'absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay',
-                                colors.fourth,
-                                blurAmount
-                            )}
-                            style={{
-                                animationName: 'aurora-border, aurora-4',
-                                animationDuration: `${animationSpeed.border}s, ${animationSpeed.fourth}s`,
-                                animationTimingFunction: 'ease-in-out, ease-in-out',
-                                animationIterationCount: 'infinite, infinite',
-                                animationDirection: 'normal, alternate',
-                            }}
-                        />
-                    </div>
-                </h1>
+            {/* Overlay shimmer effect */}
+            <div className="absolute inset-0 z-20 opacity-40">
+                <span
+                    className={`
+          ${size} font-bold
+          bg-gradient-to-r from-transparent via-white to-transparent 
+          bg-clip-text text-transparent
+          animate-shimmer
+        `}
+                >
+                    {text}
+                </span>
             </div>
         </div>
     );
-}
+};
+
+export const EnhancedAuroraText = ({
+    text = 'Enhanced Aurora',
+    className = '',
+    size = 'text-6xl',
+}) => {
+    useAuroraStyles(); // Auto-inject styles
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <div
+            className={`relative inline-block cursor-pointer ${className}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {/* Multiple background layers for depth */}
+            <div className="absolute inset-0 blur-xl opacity-20">
+                <span
+                    className={`${size} font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-aurora-pulse`}
+                >
+                    {text}
+                </span>
+            </div>
+
+            <div className="absolute inset-0 blur-md opacity-40">
+                <span
+                    className={`${size} font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-bounce`}
+                >
+                    {text}
+                </span>
+            </div>
+
+            {/* Main text */}
+            <span
+                className={`
+        ${size} font-bold relative z-10 transition-all duration-500
+        bg-gradient-to-r from-purple-300 via-pink-300 via-blue-300 to-cyan-300 
+        bg-clip-text text-transparent
+        ${isHovered ? 'animate-ping' : 'animate-aurora-pulse'}
+        drop-shadow-2xl
+      `}
+            >
+                {text}
+            </span>
+
+            {/* Animated particles effect */}
+            <div className="absolute inset-0 z-5">
+                {[...Array(6)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-60 animate-floating-particles"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${i * 0.3}s`,
+                            animationDuration: `${2 + Math.random() * 2}s`,
+                        }}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export const InteractiveAuroraText = ({
+    text = 'Interactive Aurora',
+    className = '',
+    size = 'text-5xl',
+}) => {
+    useAuroraStyles(); // Auto-inject styles
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePos({
+            x: ((e.clientX - rect.left) / rect.width) * 100,
+            y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+    };
+
+    return (
+        <div
+            className={`relative inline-block cursor-crosshair ${className}`}
+            onMouseMove={handleMouseMove}
+        >
+            {/* Dynamic gradient based on mouse position */}
+            <span
+                className={`
+          ${size} font-bold relative z-10
+          bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 
+          bg-clip-text text-transparent
+          transition-all duration-300 ease-out
+          drop-shadow-lg
+          animate-gradient-x
+        `}
+                style={{
+                    filter: `hue-rotate(${mousePos.x * 3.6}deg) brightness(${
+                        1 + mousePos.y * 0.01
+                    })`,
+                }}
+            >
+                {text}
+            </span>
+
+            {/* Mouse follower glow */}
+            <div
+                className="absolute w-32 h-32 bg-gradient-radial from-cyan-400 via-pink-400 to-transparent rounded-full opacity-30 blur-xl pointer-events-none transition-all duration-300"
+                style={{
+                    left: `${mousePos.x}%`,
+                    top: `${mousePos.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                }}
+            />
+        </div>
+    );
+};
+
+// Export default untuk kemudahan import
+export default AuroraText;
