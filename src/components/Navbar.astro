@@ -9,7 +9,17 @@ import { Menu, X } from 'lucide-react';
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="text-xl font-bold">Zentaza</a>
+                <a
+                    href="/"
+                    class="text-xl text-primary font-bold
+                        relative inline-block
+                        bg-gradient-to-r from-primary to-primary
+                        bg-[length:0%_2px] bg-left-bottom bg-no-repeat
+                        transition-all duration-300 ease-out
+                        hover:bg-[length:100%_2px]"
+                >
+                    Zentaza
+                </a>
             </div>
 
             <!-- Desktop Navigation -->
@@ -17,53 +27,66 @@ import { Menu, X } from 'lucide-react';
                 <div class="ml-10 flex items-baseline space-x-4">
                     <a
                         href="/"
-                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                        class:list={{
-                            'bg-accent text-accent-foreground': Astro.url.pathname === '/',
-                            'text-foreground': Astro.url.pathname !== '/',
-                        }}
+                        class="px-3 py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                     >
                         Home
+                        <span
+                            class:list={[
+                                'absolute bottom-0 left-1/2 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 ease-in-out',
+                                Astro.url.pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full',
+                            ]}></span>
                     </a>
                     <a
                         href="/about"
-                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                        class:list={{
-                            'bg-accent text-accent-foreground': Astro.url.pathname === '/about',
-                            'text-foreground': Astro.url.pathname !== '/about',
-                        }}
+                        class="px-3 py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                     >
                         About
+                        <span
+                            class:list={[
+                                'absolute bottom-0 left-1/2 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 ease-in-out',
+                                Astro.url.pathname === '/about'
+                                    ? 'w-full'
+                                    : 'w-0 group-hover:w-full',
+                            ]}></span>
                     </a>
                     <a
                         href="/portfolio"
-                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                        class:list={{
-                            'bg-accent text-accent-foreground': Astro.url.pathname === '/portfolio',
-                            'text-foreground': Astro.url.pathname !== '/portfolio',
-                        }}
+                        class="px-3 py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                     >
                         Portfolio
+                        <span
+                            class:list={[
+                                'absolute bottom-0 left-1/2 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 ease-in-out',
+                                Astro.url.pathname === '/portfolio'
+                                    ? 'w-full'
+                                    : 'w-0 group-hover:w-full',
+                            ]}></span>
                     </a>
                     <a
                         href="/blog"
-                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                        class:list={{
-                            'bg-accent text-accent-foreground': Astro.url.pathname === '/blog',
-                            'text-foreground': Astro.url.pathname !== '/blog',
-                        }}
+                        class="px-3 py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                     >
                         Blog
+                        <span
+                            class:list={[
+                                'absolute bottom-0 left-1/2 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 ease-in-out',
+                                Astro.url.pathname === '/blog'
+                                    ? 'w-full'
+                                    : 'w-0 group-hover:w-full',
+                            ]}></span>
                     </a>
                     <a
                         href="/contact"
-                        class="px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                        class:list={{
-                            'bg-accent text-accent-foreground': Astro.url.pathname === '/contact',
-                            'text-foreground': Astro.url.pathname !== '/contact',
-                        }}
+                        class="px-3 py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                     >
                         Contact
+                        <span
+                            class:list={[
+                                'absolute bottom-0 left-1/2 h-0.5 bg-primary transform -translate-x-1/2 transition-all duration-300 ease-in-out',
+                                Astro.url.pathname === '/contact'
+                                    ? 'w-full'
+                                    : 'w-0 group-hover:w-full',
+                            ]}></span>
                     </a>
                 </div>
             </div>
@@ -90,58 +113,73 @@ import { Menu, X } from 'lucide-react';
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
                 href="/"
-                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                class:list={{
-                    'bg-accent text-accent-foreground': Astro.url.pathname === '/',
-                    'text-foreground': Astro.url.pathname !== '/',
-                }}
+                class="block px-3 py-2 text-base font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                 data-mobile-menu-item
             >
                 Home
+                <span
+                    class:list={[
+                        'absolute bottom-0 left-3 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                        Astro.url.pathname === '/'
+                            ? 'w-[calc(100%-24px)]'
+                            : 'w-0 group-hover:w-[calc(100%-24px)]',
+                    ]}></span>
             </a>
             <a
                 href="/about"
-                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                class:list={{
-                    'bg-accent text-accent-foreground': Astro.url.pathname === '/about',
-                    'text-foreground': Astro.url.pathname !== '/about',
-                }}
+                class="block px-3 py-2 text-base font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                 data-mobile-menu-item
             >
                 About
+                <span
+                    class:list={[
+                        'absolute bottom-0 left-3 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                        Astro.url.pathname === '/about'
+                            ? 'w-[calc(100%-24px)]'
+                            : 'w-0 group-hover:w-[calc(100%-24px)]',
+                    ]}></span>
             </a>
             <a
                 href="/portfolio"
-                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                class:list={{
-                    'bg-accent text-accent-foreground': Astro.url.pathname === '/portfolio',
-                    'text-foreground': Astro.url.pathname !== '/portfolio',
-                }}
+                class="block px-3 py-2 text-base font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                 data-mobile-menu-item
             >
                 Portfolio
+                <span
+                    class:list={[
+                        'absolute bottom-0 left-3 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                        Astro.url.pathname === '/portfolio'
+                            ? 'w-[calc(100%-24px)]'
+                            : 'w-0 group-hover:w-[calc(100%-24px)]',
+                    ]}></span>
             </a>
             <a
                 href="/blog"
-                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                class:list={{
-                    'bg-accent text-accent-foreground': Astro.url.pathname === '/blog',
-                    'text-foreground': Astro.url.pathname !== '/blog',
-                }}
+                class="block px-3 py-2 text-base font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                 data-mobile-menu-item
             >
                 Blog
+                <span
+                    class:list={[
+                        'absolute bottom-0 left-3 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                        Astro.url.pathname === '/blog'
+                            ? 'w-[calc(100%-24px)]'
+                            : 'w-0 group-hover:w-[calc(100%-24px)]',
+                    ]}></span>
             </a>
             <a
                 href="/contact"
-                class="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                class:list={{
-                    'bg-accent text-accent-foreground': Astro.url.pathname === '/contact',
-                    'text-foreground': Astro.url.pathname !== '/contact',
-                }}
+                class="block px-3 py-2 text-base font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
                 data-mobile-menu-item
             >
                 Contact
+                <span
+                    class:list={[
+                        'absolute bottom-0 left-3 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                        Astro.url.pathname === '/contact'
+                            ? 'w-[calc(100%-24px)]'
+                            : 'w-0 group-hover:w-[calc(100%-24px)]',
+                    ]}></span>
             </a>
         </div>
     </div>
