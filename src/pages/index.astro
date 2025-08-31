@@ -3,7 +3,9 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import HeroProfileCard from '@/components/ProfileCard';
-import SkillPreview from '@/components/Skillcard'
+import SkillPreview from '@/components/Skillcard';
+import { AuroraTextEffect } from '@/components/Auroratext';
+import { TypeAnimation } from 'react-type-animation';
 ---
 
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
@@ -12,27 +14,57 @@ import SkillPreview from '@/components/Skillcard'
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="flex-1 text-center lg:text-left animate-fade-in">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                        Hi, I'm <span class="text-primary">Zentaza</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
-                        Fullstack Developer specializing in Software Engineering, Data Science/AI,
-                        Cybersecurity, and IoT
-                    </p>
+                    <div class="flex items-start gap-3 mb-6">
+                        <span class="text-4xl md:text-6xl text-start font-bold">Hi, I'm</span>
+                        <AuroraTextEffect
+                            text="Zentaza"
+                            fontSize="clamp(1rem, 0.85rem+0.6vw, 1.25rem)"
+                            textClassName="text-4xl md:text-6xl font-bold"
+                            colors={{
+                                first: 'bg-cyan-400',
+                                second: 'bg-indigo-400',
+                                third: 'bg-pink-400',
+                                fourth: 'bg-purple-500',
+                            }}
+                            blurAmount="blur-lg"
+                            client:visible
+                        />
+                    </div>
+                    <!-- Fixed height container for TypeAnimation -->
+                    <div class="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start">
+                        <TypeAnimation
+                            sequence={[
+                                // Same substring at the start will only be typed out once, initially
+                                'Fullstack Developer specializing in Software Engineering',
+                                1000, // wait 1s before replacing "Mice" with "Hamsters"
+                                'Fullstack Developer specializing in Data Science/AI',
+                                1000,
+                                'Fullstack Developer specializing in Cybersecurity',
+                                1000,
+                                'Fullstack Developer specializing in IoT Engineering',
+                                1000,
+                            ]}
+                            wrapper="p"
+                            speed={50}
+                            className='text-2xl md:text-3xl text-muted-foreground max-w-2xl leading-tight'
+                            repeat={Infinity}
+                            client:visible
+                        />
+                    </div>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <Button asChild size="lg">
-                            <a href="/portfolio">
+                        <Button size="lg" variant='shine' onClick={() => window.location.href = '/portfolio'}>
+                            
                                 View My Work
                                 <ArrowRight className="ml-2 h-4 w-4" />
-                            </a>
+                            
                         </Button>
-                        <Button asChild variant="outline" size="lg">
-                            <a href="/contact"> Get In Touch </a>
+                        <Button variant="outline" size="lg" onClick={() => window.location.href = '/contact'}>
+                            Get In Touch
                         </Button>
                     </div>
                 </div>
                 <div class="flex-1 w-full animate-fade-in delay-100">
-                    <HeroProfileCard client:idle/>
+                    <HeroProfileCard client:idle />
                 </div>
             </div>
         </div>
