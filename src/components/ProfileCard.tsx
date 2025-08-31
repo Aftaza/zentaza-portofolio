@@ -185,22 +185,6 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                                 </motion.span>
                             </div>
 
-                            {/* External Link Icon */}
-                            <motion.div
-                                className="absolute top-6 right-6"
-                                initial={{ x: 16, opacity: 0, scale: 1 }}
-                                whileHover={{
-                                    x: 0,
-                                    opacity: 1,
-                                    scale: 1.1,
-                                    transition: { duration: 0.5, ease: 'easeOut' },
-                                }}
-                            >
-                                <div className="p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg">
-                                    <ExternalLink size={20} className="text-gray-700" />
-                                </div>
-                            </motion.div>
-
                             {/* Content Overlay */}
                             <div className="absolute bottom-0 left-0 right-0 p-8">
                                 <motion.div

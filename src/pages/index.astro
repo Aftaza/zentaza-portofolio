@@ -33,13 +33,13 @@ import { GridBackground } from '@/components/GridBackground';
                     >
                         <TypeAnimation
                             sequence={[
-                                'Fullstack Developer specializing in Software Engineering',
+                                'Fullstack Developer specializing in • Software Engineering',
                                 1000,
-                                'Fullstack Developer specializing in Data Science/AI',
+                                'Fullstack Developer specializing in • Data Science/AI',
                                 1000,
-                                'Fullstack Developer specializing in Cybersecurity',
+                                'Fullstack Developer specializing in • Cybersecurity',
                                 1000,
-                                'Fullstack Developer specializing in IoT Engineering',
+                                'Fullstack Developer specializing in • IoT Engineering',
                                 1000,
                             ]}
                             wrapper="p"
@@ -94,9 +94,15 @@ import { GridBackground } from '@/components/GridBackground';
                 I'm always open to discussing new projects, creative ideas, or opportunities to be
                 part of your vision.
             </p>
-            <Button asChild size="lg">
-                <a href="/contact"> Let's Connect </a>
-            </Button>
+            <a
+                href="/contact"
+                class:list={[
+                    buttonVariants({ variant: 'secondary', size: 'lg' }),
+                    'flex items-center', // pastikan class flex ditambahkan jika perlu
+                ]}
+            >
+                Lets Get Discuss
+            </a>
         </div>
     </section>
 </MainLayout>
