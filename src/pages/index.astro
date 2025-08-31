@@ -1,12 +1,14 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import HeroProfileCard from '@/components/ProfileCard';
 import SkillPreview from '@/components/Skillcard';
 import AuroraText from '@/components/Auroratext';
 import { TypeAnimation } from 'react-type-animation';
 import { GridBackground } from '@/components/GridBackground';
+import Carousel3D from '@/components/3dCarousel';
+import { portofolioItems } from '@/lib/allData';
 ---
 
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
@@ -84,6 +86,17 @@ import { GridBackground } from '@/components/GridBackground';
             <h2 class="text-3xl font-bold text-center mb-12">What I Do</h2>
             <SkillPreview client:visible />
         </div>
+    </section>
+
+    <!-- 3D Portfolio Carousel -->
+    <section class="py-16 bg-gradient-to-b from-background to-muted/30">
+        <Carousel3D 
+            items={portofolioItems}
+            title="Featured Projects"
+            subtitle="Portfolio Showcase"
+            tagline="Explore my latest projects across different domains - from AI-powered solutions to IoT innovations"
+            client:visible
+        />
     </section>
 
     <!-- CTA Section -->
