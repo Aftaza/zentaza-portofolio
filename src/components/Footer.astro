@@ -1,65 +1,152 @@
 ---
-import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { FaTiktok, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa6';
 ---
 
 <footer class="border-t border-border bg-background/80 backdrop-blur-sm mt-12">
-  <div class="container mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- About Section -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Zentaza Portfolio</h3>
-        <p class="text-muted-foreground">
-          Fullstack Developer specializing in Software Engineering, Data Science/AI, Cybersecurity, and IoT.
-        </p>
-      </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Zentaza Portfolio</h3>
+                <p class="text-muted-foreground">
+                    Fullstack Developer specializing in Software Engineering, Data Science/AI,
+                    Cybersecurity, and IoT.
+                </p>
+            </div>
 
-      <!-- Quick Links -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-        <ul class="space-y-2">
-          <li><a href="/" class="text-muted-foreground hover:text-foreground transition-colors">Home</a></li>
-          <li><a href="/about" class="text-muted-foreground hover:text-foreground transition-colors">About</a></li>
-          <li><a href="/portfolio" class="text-muted-foreground hover:text-foreground transition-colors">Portfolio</a></li>
-          <li><a href="/blog" class="text-muted-foreground hover:text-foreground transition-colors">Blog</a></li>
-          <li><a href="/contact" class="text-muted-foreground hover:text-foreground transition-colors">Contact</a></li>
-        </ul>
-      </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Nav Links</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a
+                            href="/"
+                            class="py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
+                        >
+                            Home
+                            <span
+                                class:list={[
+                                    'absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                                    Astro.url.pathname === '/'
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full',
+                                ]}></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/about"
+                            class="py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
+                        >
+                            About
+                            <span
+                                class:list={[
+                                    'absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                                    Astro.url.pathname === '/about'
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full',
+                                ]}></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/portfolio"
+                            class="py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
+                        >
+                            Portfolio
+                            <span
+                                class:list={[
+                                    'absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                                    Astro.url.pathname === '/portfolio'
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full',
+                                ]}></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/blog"
+                            class="py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
+                        >
+                            Blog
+                            <span
+                                class:list={[
+                                    'absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                                    Astro.url.pathname === '/blog'
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full',
+                                ]}></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/contact"
+                            class="py-2 text-sm font-medium text-foreground relative transition-all duration-300 ease-in-out hover:text-primary group"
+                        >
+                            Contact
+                            <span
+                                class:list={[
+                                    'absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+                                    Astro.url.pathname === '/contact'
+                                        ? 'w-full'
+                                        : 'w-0 group-hover:w-full',
+                                ]}></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-      <!-- Social Links -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Connect</h3>
-        <div class="flex space-x-4">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github class="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin class="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <Twitter class="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:contact@example.com" aria-label="Email">
-              <Mail class="h-5 w-5" />
-            </a>
-          </Button>
+            <!-- Social Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <div class="flex space-x-1">
+                    <a
+                        href="https://github.com/Aftaza"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        class={buttonVariants({ variant: 'ghost', size: 'icon' }) +
+                            'flex items-center p-2'}
+                    >
+                        <FaGithub className="h-5 w-5" />
+                    </a>
+                    <a
+                        href="https://id.linkedin.com/in/m-alfian-taftazani-2a456124b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        class={buttonVariants({ variant: 'ghost', size: 'icon' }) +
+                            'flex items-center p-2'}
+                    >
+                        <FaLinkedin className="h-5 w-5" />
+                    </a>
+                    <a
+                        href="https://www.tiktok.com/@zentaza_official"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Tiktok"
+                        class={buttonVariants({ variant: 'ghost', size: 'icon' }) +
+                            'flex items-center p-2'}
+                    >
+                        <FaTiktok className="h-5 w-5" />
+                    </a>
+                    <a
+                        href="mailto:zen.bisnis17@gmail.com"
+                        aria-label="Email"
+                        class={buttonVariants({ variant: 'ghost', size: 'icon' }) +
+                            'flex items-center p-2'}
+                    >
+                        <FaEnvelope className="h-5 w-5" />
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="mt-4">
-          <ThemeToggle />
-        </div>
-      </div>
-    </div>
 
-    <div class="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-      <p>&copy; {new Date().getFullYear()} Zentaza Portfolio. All rights reserved.</p>
+        <div class="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} Zentaza Portfolio. All rights reserved.</p>
+            <p class="text-muted-foreground/20">Version 1.1.1</p>
+        </div>
     </div>
-  </div>
 </footer>

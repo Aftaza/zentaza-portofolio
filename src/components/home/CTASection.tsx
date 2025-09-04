@@ -33,7 +33,6 @@ export function AnimatedCTA() {
             initial="hidden"
             whileInView="visible" // Memicu 'visible' saat masuk viewport
             viewport={{ amount: 0.4 }} // Animasi berjalan setiap kali 40% elemen terlihat
-            // Properti `once: true` dihapus agar animasi dapat berulang
         >
             <div className="container mx-auto px-4 text-center">
                 <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-4">
