@@ -20,7 +20,7 @@ import {
     TbShieldCheckeredFilled
 } from 'react-icons/tb';
 import type { SkillCard } from '@/lib/data';
-import { Badge } from './ui/badge';
+import { Badge } from '../ui/badge';
 
 const cards: SkillCard[] = [
     {

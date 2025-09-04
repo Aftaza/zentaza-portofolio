@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
-import { badgeVariants } from './ui/badge';
+import { badgeVariants } from '../ui/badge';
 import type { Carousel3DProps } from '@/lib/data'; // Anda bisa rename type ini jika mau
 
 // --- Helper Component untuk Kartu ---
