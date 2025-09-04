@@ -179,10 +179,6 @@ const SkillPreview = () => {
         <div className="min-h-screen py-10">
             <section ref={containerRef} className="px-8">
                 <div className="max-w-7xl mx-auto relative">
-                     {/* We removed the "Normal Cards" and the "Glow Overlay" wrapper.
-                        Now, we render a single grid of cards. 
-                        Each card (`AnimatedCard`) controls its own animation based on the shared scroll progress.
-                    */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                         {cards.map((card, index) => (
                             <AnimatedCard
