@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import {
     TbCode,
     TbBrain,
@@ -21,202 +22,181 @@ import {
 import type { SkillCard } from '@/lib/data';
 import { Badge } from './ui/badge';
 
-const SkillPreview: React.FC = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const overlayRef = useRef<HTMLDivElement>(null);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [showOverlay, setShowOverlay] = useState(false);
+const cards: SkillCard[] = [
+    {
+        id: 'fullstack',
+        title: 'Fullstack Software Engineer',
+        description:
+            'Building robust end-to-end applications, from interactive user interfaces to scalable backend architectures.',
+        icon: <TbCode className="w-6 h-6" />,
+        features: [
+            { icon: <TbWorldCode className="w-4 h-4" />, text: 'Web App' },
+            { icon: <TbDeviceMobileCode className="w-4 h-4" />, text: 'Mobile App' },
+            { icon: <TbApi className="w-4 h-4" />, text: 'Backend' },
+            { icon: <TbDatabaseCog className="w-4 h-4" />, text: 'Database' },
+            { icon: <TbServerCog className="w-4 h-4" />, text: 'DevOps' },
+        ],
+        glowColor: '#3b82f6',
+    },
+    {
+        id: 'data-ai',
+        title: 'Data Science & AI Engineer',
+        description:
+            'Developing machine learning models and AI solutions, from data analysis to model implementation in production environments.',
+        icon: <TbBrain className="w-6 h-6" />,
+        features: [
+            { icon: <TbBrandPython className="w-4 h-4" />, text: 'Pandas, Scikit' },
+            { icon: <TbFileDatabase className="w-4 h-4" />, text: 'Big Data' },
+            { icon: <TbChartDots3 className="w-4 h-4" />, text: 'ML Models' },
+        ],
+        glowColor: '#f97316',
+    },
+    {
+        id: 'cybersecurity',
+        title: 'Cybersecurity',
+        description:
+            'Protecting digital infrastructure with vulnerability analysis, penetration testing, and security protocol implementation.',
+        icon: <TbShieldLock className="w-6 h-6" />,
+        features: [
+            { icon: <TbBug className="w-4 h-4" />, text: 'Ethical Hacking' },
+            { icon: <TbShieldCheckeredFilled className="w-4 h-4" />, text: 'Pentesting' },
+            { icon: <TbCloudLock className="w-4 h-4" />, text: 'Network & Cloud Security' },
+        ],
+        glowColor: '#ef4444',
+    },
+    {
+        id: 'iot',
+        title: 'IoT Engineer',
+        description:
+            'Designing and building connected device ecosystems, integrating hardware, firmware, and cloud platforms.',
+        icon: <TbRouter className="w-6 h-6" />,
+        features: [
+            { icon: <TbCpu2 className="w-4 h-4" />, text: 'Microcontrollers (ESP32)' },
+            {
+                icon: <TbCloudDataConnection className="w-4 h-4" />,
+                text: 'MQTT & Cloud Integration',
+            },
+        ],
+        glowColor: '#8b5cf6',
+    },
+];
 
-    const cards: SkillCard[] = [
-        {
-            id: 'fullstack',
-            title: 'Fullstack Software Engineer',
-            description:
-                'Building robust end-to-end applications, from interactive user interfaces to scalable backend architectures.',
-            icon: <TbCode className="w-6 h-6" />,
-            features: [
-                { icon: <TbWorldCode className="w-4 h-4" />, text: 'Web App' },
-                { icon: <TbDeviceMobileCode className="w-4 h-4" />, text: 'Mobile App' },
-                { icon: <TbApi className="w-4 h-4" />, text: 'Backend' },
-                { icon: <TbDatabaseCog className="w-4 h-4" />, text: 'Database' },
-                { icon: <TbServerCog className="w-4 h-4" />, text: 'DevOps' },
-            ],
-            glowColor: '#3b82f6', // Biru
-        },
-        {
-            id: 'data-ai',
-            title: 'Data Science & AI Engineer',
-            description:
-                'Developing machine learning models and AI solutions, from data analysis to model implementation in production environments.',
-            icon: <TbBrain className="w-6 h-6" />,
-            features: [
-                { icon: <TbBrandPython className="w-4 h-4" />, text: 'Pandas, Scikit' },
-                { icon: <TbFileDatabase className="w-4 h-4" />, text: 'Big Data' },
-                { icon: <TbChartDots3 className="w-4 h-4" />, text: 'ML Models' },
-            ],
-            glowColor: '#f97316', // Oranye
-        },
-        {
-            id: 'cybersecurity',
-            title: 'Cybersecurity',
-            description:
-                'Protecting digital infrastructure with vulnerability analysis, penetration testing, and security protocol implementation.',
-            icon: <TbShieldLock className="w-6 h-6" />,
-            features: [
-                { icon: <TbBug className="w-4 h-4" />, text: 'Ethical Hacking' },
-                { icon: <TbShieldCheckeredFilled className="w-4 h-4" />, text: 'Pentesting' },
-                { icon: <TbCloudLock className="w-4 h-4" />, text: 'Network & Cloud Security' },
-            ],
-            glowColor: '#ef4444', // Merah
-        },
-        {
-            id: 'iot',
-            title: 'IoT Engineer',
-            description:
-                'Designing and building connected device ecosystems, integrating hardware, firmware, and cloud platforms.',
-            icon: <TbRouter className="w-6 h-6" />,
-            features: [
-                { icon: <TbCpu2 className="w-4 h-4" />, text: 'Microcontrollers (ESP32)' },
-                {
-                    icon: <TbCloudDataConnection className="w-4 h-4" />,
-                    text: 'MQTT & Cloud Integration',
-                },
-            ],
-            glowColor: '#8b5cf6', // Ungu
-        },
-    ];
-
-    useEffect(() => {
-        const container = containerRef.current;
-        const overlay = overlayRef.current;
-
-        if (!container || !overlay) return;
-
-        const handleMouseMove = (e: MouseEvent) => {
-            const rect = container.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            setMousePosition({ x, y });
-            setShowOverlay(true);
-
-            overlay.style.setProperty('--x', `${x}px`);
-            overlay.style.setProperty('--y', `${y}px`);
-            overlay.style.setProperty('--opacity', '1');
-        };
-
-        const handleMouseLeave = () => {
-            setShowOverlay(false);
-            overlay.style.setProperty('--opacity', '0');
-        };
-
-        container.addEventListener('mousemove', handleMouseMove);
-        container.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            container.removeEventListener('mousemove', handleMouseMove);
-            container.removeEventListener('mouseleave', handleMouseLeave);
-        };
-    }, []);
-
-    const CardContent: React.FC<{ card: SkillCard; isOverlay?: boolean }> = ({
-        card,
-        isOverlay = false,
-    }) => (
-        <div
-            className={`
-        relative flex flex-col h-full
-        ${isOverlay ? 'bg-opacity-10 border-opacity-100' : 'bg-card'}
-        backdrop-blur-sm rounded-2xl p-8 border
-        transition-all duration-300 ease-in-out
-      `}
-            style={
-                isOverlay
-                    ? {
-                          backgroundColor: card.glowColor + '15',
-                          borderColor: card.glowColor,
-                          boxShadow: `0 0 0 1px inset ${card.glowColor}`,
-                      }
-                    : {}
-            }
-        >
-            {/* Icon */}
-            <div
-                className={`
-          inline-flex items-center justify-center
-          w-12 h-12 rounded-xl mb-6 text-white
-          shadow-lg transition-all duration-1000 ease-in-out
-          ${!isOverlay ? 'group-hover:scale-110' : ''}
+const CardContent = ({ card }: { card: SkillCard }) => (
+    <div
+        className={`
+            relative flex flex-col h-full bg-opacity-10 border-opacity-100
+            backdrop-blur-sm rounded-2xl p-8 border
+            transition-all duration-300 ease-in-out
         `}
-                style={{
-                    backgroundColor: card.glowColor,
-                    boxShadow: `0 8px 24px ${card.glowColor}25`,
-                }}
-            >
-                {card.icon}
-            </div>
+        style={{
+            backgroundColor: card.glowColor + '15',
+            borderColor: card.glowColor,
+            boxShadow: `0 0 0 1px inset ${card.glowColor}`,
+        }}
+    >
+        {/* Icon with enhanced animation */}
+        <motion.div
+            animate={{
+                scale: [1, 1.05, 1],
+                rotate: [0, 2, -2, 0]
+            }}
+            transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }}
+            className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6 text-white shadow-lg"
+            style={{
+                backgroundColor: card.glowColor,
+                boxShadow: `0 8px 24px ${card.glowColor}25`,
+            }}
+        >
+            {card.icon}
+        </motion.div>
 
-            {/* Title */}
-            <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
+        {/* Title */}
+        <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            {card.title}
+        </h3>
 
-            {/* Description */}
-            <p className="text-muted-foreground text-base leading-relaxed mb-8 flex-grow">
-                {card.description}
-            </p>
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8 flex-grow">
+            {card.description}
+        </p>
 
-            {/* Features */}
-            <div className="flex flex-wrap gap-2">
-                {card.features.map((feature, index) => (
-                    <Badge
-                        variant="outline"
-                        key={index}
-                        className="flex items-center gap-2 px-3 py-1.5"
-                    >
-                        <div className="text-muted-foreground">{feature.icon}</div>
-                        <span className="text-xs font-medium text-muted-foreground">
-                            {feature.text}
-                        </span>
-                    </Badge>
-                ))}
-            </div>
+        {/* Features */}
+        <div className="flex flex-wrap gap-2">
+            {card.features.map((feature, featureIndex) => (
+                <Badge
+                    key={featureIndex}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                >
+                    <div className="text-gray-600 dark:text-gray-400">{feature.icon}</div>
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                        {feature.text}
+                    </span>
+                </Badge>
+            ))}
         </div>
-    );
+    </div>
+);
+
+type AnimatedCardProps = {
+    card: SkillCard;
+    index: number;
+    scrollYProgress: MotionValue<number>;
+    numCards: number;
+};
+
+const AnimatedCard = ({ card, index, scrollYProgress, numCards }: AnimatedCardProps) => {
+    // Calculate the scroll range for this specific card to appear.
+    // Each card will animate in its own "slice" of the total scroll progress.
+    const animationStart = 0.2 + (index / numCards) * 0.6; // Start animation later for subsequent cards
+    const animationEnd = animationStart + (1 / numCards) * 0.4; // The duration of the fade-in animation
+
+    // Create a transform for opacity and scale that is specific to this card.
+    // It will animate from 0 to 1 and then stay at 1.
+    const opacity = useTransform(scrollYProgress, [animationStart, animationEnd], [0, 1]);
+    const scale = useTransform(scrollYProgress, [animationStart, animationEnd], [0.95, 1]);
 
     return (
-        <section className="min-h-full px-8">
-            <div className="max-w-7xl mx-auto relative">
-                <div ref={containerRef} className="relative">
-                    {/* Normal Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch p-5">
-                        {cards.map((card) => (
-                            <div key={card.id} className="group cursor-pointer">
-                                <CardContent card={card} />
-                            </div>
+        <motion.div style={{ opacity, scale }}>
+            <CardContent card={card} />
+        </motion.div>
+    );
+};
+
+
+const SkillPreview = () => {
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    return (
+        <div className="min-h-screen py-10">
+            <section ref={containerRef} className="px-8">
+                <div className="max-w-7xl mx-auto relative">
+                     {/* We removed the "Normal Cards" and the "Glow Overlay" wrapper.
+                        Now, we render a single grid of cards. 
+                        Each card (`AnimatedCard`) controls its own animation based on the shared scroll progress.
+                    */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                        {cards.map((card, index) => (
+                            <AnimatedCard
+                                key={card.id}
+                                card={card}
+                                index={index}
+                                scrollYProgress={scrollYProgress}
+                                numCards={cards.length}
+                            />
                         ))}
                     </div>
-
-                    {/* Glow Overlay */}
-                    <div
-                        ref={overlayRef}
-                        className="absolute inset-0 pointer-events-none select-none opacity-0 transition-all duration-400 ease-out p-5"
-                        style={{
-                            WebkitMask:
-                                'radial-gradient(25rem 25rem at var(--x, 0) var(--y, 0), #000 1%, transparent 50%)',
-                            mask: 'radial-gradient(25rem 25rem at var(--x, 0) var(--y, 0), #000 1%, transparent 50%)',
-                            opacity: showOverlay ? 'var(--opacity)' : '0',
-                        }}
-                    >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                            {cards.map((card) => (
-                                <div key={`overlay-${card.id}`}>
-                                    <CardContent card={card} isOverlay={true} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 
