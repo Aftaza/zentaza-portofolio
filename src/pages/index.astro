@@ -8,6 +8,7 @@ import AuroraText from '@/components/Auroratext';
 import { TypeAnimation } from 'react-type-animation';
 import { GridBackground } from '@/components/GridBackground';
 import Carousel3D from '@/components/3dCarousel';
+import ScrollControlledTyping from '@/components/ScrollText';
 import { portofolioItems } from '@/lib/allData';
 ---
 
@@ -56,7 +57,7 @@ import { portofolioItems } from '@/lib/allData';
                             href="/portfolio"
                             class:list={[
                                 buttonVariants({ variant: 'shine', size: 'lg' }),
-                                'flex items-center', // pastikan class flex ditambahkan jika perlu
+                                'flex items-center',
                             ]}
                         >
                             View My Work
@@ -66,7 +67,7 @@ import { portofolioItems } from '@/lib/allData';
                             href="/contact"
                             class:list={[
                                 buttonVariants({ variant: 'outline', size: 'lg' }),
-                                'flex items-center', // pastikan class flex ditambahkan jika perlu
+                                'flex items-center',
                             ]}
                         >
                             Get in Touch
@@ -79,6 +80,12 @@ import { portofolioItems } from '@/lib/allData';
             </div>
         </div>
     </GridBackground>
+
+    <!-- Scroll-Controlled Typing Section -->
+    <ScrollControlledTyping 
+        text="Crafting digital experiences with passion, precision, and innovation. Every line of code tells a story of creativity and technical excellence."
+        client:visible
+    />
 
     <!-- Skills Preview -->
     <section class="py-16">
@@ -111,7 +118,7 @@ import { portofolioItems } from '@/lib/allData';
                 href="/contact"
                 class:list={[
                     buttonVariants({ variant: 'secondary', size: 'lg' }),
-                    'flex items-center', // pastikan class flex ditambahkan jika perlu
+                    'flex items-center mx-auto w-fit',
                 ]}
             >
                 Lets Get Discuss
