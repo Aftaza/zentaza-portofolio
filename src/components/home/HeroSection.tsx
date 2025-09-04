@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import HeroProfileCard from '@/components/home/ProfileCard';
 import AuroraText from '@/components/Auroratext';
-import { TypeAnimation } from 'react-type-animation';
+import AnimatedText from '@/components/common/AnimatedText';
 
 // Terapkan tipe Variants secara eksplisit
 const containerVariants: Variants = {
@@ -30,6 +30,13 @@ const itemVariants: Variants = {
 };
 
 export function AnimatedHero() {
+    const specializations = [
+        'Fullstack Developer Specializing in • Software Engineering',
+        'Fullstack Developer Specializing in • Data Science/AI',
+        'Fullstack Developer Specializing in • Cybersecurity',
+        'Fullstack Developer Specializing in • IoT Engineering'
+    ];
+
     return (
         <motion.div
             className="container mx-auto px-4"
@@ -49,21 +56,9 @@ export function AnimatedHero() {
                         variants={itemVariants}
                         className="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start"
                     >
-                        <TypeAnimation
-                            sequence={[
-                                'Fullstack Developer Specializing in • Software Engineering',
-                                1000,
-                                'Fullstack Developer Specializing in • Data Science/AI',
-                                1000,
-                                'Fullstack Developer Specializing in • Cybersecurity',
-                                1000,
-                                'Fullstack Developer Specializing in • IoT Engineering',
-                                1000,
-                            ]}
-                            wrapper="p"
-                            speed={50}
+                        <AnimatedText 
+                            texts={specializations}
                             className="text-2xl md:text-3xl text-muted-foreground max-w-2xl leading-tight"
-                            repeat={Infinity}
                         />
                     </motion.div>
 
