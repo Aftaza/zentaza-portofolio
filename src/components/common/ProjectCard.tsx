@@ -69,10 +69,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         pointerEvents: pointerEvents as any, // Penting untuk mencegah klik pada kartu belakang
       }}
     >
-      <Card className="overflow-hidden bg-background text-foreground border shadow-lg flex flex-col h-[500px]">
+      <Card className="overflow-hidden bg-background text-foreground border shadow-lg flex flex-col h-[400px] sm:h-[500px]">
         {/* Header Gambar */}
         <div
-          className="relative bg-black p-6 flex items-center justify-center h-48 overflow-hidden"
+          className="relative bg-black p-4 sm:p-6 flex items-center justify-center h-32 sm:h-48 overflow-hidden"
           style={{
             backgroundImage: `url(${item.imageUrl})`,
             backgroundSize: 'cover',
@@ -84,32 +84,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             className="relative z-10 text-center text-white"
             style={{ opacity: contentOpacity }} // Opasitas juga diterapkan pada header teks
           >
-            <h3 className="text-2xl font-bold mb-2">{item.brand.toUpperCase()}</h3>
-            <div className="w-12 h-1 bg-white mx-auto mb-2" />
-            <p className="text-sm">{item.title}</p>
+            <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">{item.brand.toUpperCase()}</h3>
+            <div className="w-8 h-0.5 sm:w-12 sm:h-1 bg-white mx-auto mb-1 sm:mb-2" />
+            <p className="text-xs sm:text-sm">{item.title}</p>
           </motion.div>
         </div>
 
         {/* Konten CardContent */}
-        <CardContent className="p-6 flex flex-col flex-grow bg-card">
+        <CardContent className="p-4 sm:p-6 flex flex-col flex-grow bg-card">
           {' '}
           {/* Tambahkan bg-card di sini */}
           <motion.div style={{ opacity: contentOpacity }}>
             {' '}
             {/* Opasitas pada seluruh CardContent */}
-            <h3 className="text-xl font-bold mb-1 ">{item.title}</h3>
-            <p className="text-muted-foreground text-sm font-medium mb-2">
+            <h3 className="text-lg sm:text-xl font-bold mb-1">{item.title}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm font-medium mb-2">
               {item.brand}
             </p>
-            <p className="text-muted-foreground text-sm flex-grow">
+            <p className="text-muted-foreground text-xs sm:text-sm flex-grow">
               {item.description}
             </p>
-            <div className="mt-4">
-              <div className="flex flex-wrap gap-2 mb-4">
+            <div className="mt-3 sm:mt-4">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                 {item.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className={`px-2 py-1 text-xs ${badgeVariants({
+                    className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[0.65rem] sm:text-xs ${badgeVariants({
                       variant: 'outline',
                     })}`}
                   >
@@ -119,10 +119,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               </div>
               <a
                 href={item.link}
-                className="text-muted-foreground flex items-center hover:underline relative group"
+                className="text-muted-foreground flex items-center hover:underline relative group text-sm sm:text-base"
               >
                 <span className="relative z-10">Learn more</span>
-                <ArrowRight className="ml-2 w-4 h-4 relative z-10" />
+                <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 relative z-10" />
               </a>
             </div>
           </motion.div>

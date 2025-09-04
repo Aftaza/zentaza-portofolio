@@ -109,29 +109,29 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
     }, [isHovered, floatingY, floatingRotate]);
 
     return (
-        <div className="flex items-center justify-center p-8">
+        <div className="flex items-center justify-center p-4 sm:p-6 md:p-8">
             <motion.div
                 ref={cardRef}
                 style={{ 
                     transform: useMotionTemplate`${transform} translateY(${floatingY}px) rotate(${floatingRotate}deg)`,
                 }}
-                className="relative w-full max-w-md mx-auto cursor-pointer select-none rounded-3xl"
+                className="relative w-full max-w-md mx-auto cursor-pointer select-none rounded-2xl sm:rounded-3xl"
                 onMouseMove={handleMouseMove}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
                 {/* Main Card */}
-                <motion.div className="relative group rounded-3xl" style={{ boxShadow }}>
+                <motion.div className="relative group rounded-2xl sm:rounded-3xl" style={{ boxShadow }}>
                     {/* Card Container */}
                     <motion.div
-                        className="relative bg-white rounded-3xl overflow-hidden"
+                        className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden"
                         whileHover={{
                             boxShadow: '0 25px 50px rgba(147, 51, 234, 0.25)',
                         }}
                         transition={{ duration: 0.3 }}
                     >
                         {/* Shimmer Effect */}
-                        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                        <div className="absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl">
                             <motion.div
                                 animate={{
                                     x: ['-100%', '100%'],
@@ -172,9 +172,9 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                             />
 
                             {/* Category Badge */}
-                            <div className="absolute top-6 left-6">
+                            <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
                                 <motion.span
-                                    className="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-800 text-sm font-semibold rounded-full shadow-lg"
+                                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/90 backdrop-blur-sm text-gray-800 text-xs sm:text-sm font-semibold rounded-full shadow-lg"
                                     whileHover={{
                                         scale: 1.1,
                                         backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -186,7 +186,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                             </div>
 
                             {/* Content Overlay */}
-                            <div className="absolute bottom-0 left-0 right-0 p-8">
+                            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
                                 <motion.div
                                     initial={{ y: 16, opacity: 0.9 }}
                                     whileHover={{
@@ -196,7 +196,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                                     }}
                                 >
                                     <motion.h1
-                                        className="text-3xl font-bold text-white mb-2 leading-tight"
+                                        className="text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight"
                                         whileHover={{
                                             x: 4,
                                             transition: { duration: 0.3 },
@@ -206,7 +206,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                                     </motion.h1>
 
                                     <motion.p
-                                        className="text-lg text-gray-200 mb-4"
+                                        className="text-base sm:text-lg text-gray-200 mb-3 sm:mb-4"
                                         whileHover={{
                                             x: 2,
                                             transition: { duration: 0.3, delay: 0.1 },
@@ -215,27 +215,9 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                                         {subtitle}
                                     </motion.p>
 
-                                    {/* Meta Information */}
-                                    <motion.div
-                                        className="flex items-center space-x-6 mb-4"
-                                        whileHover={{
-                                            x: 2,
-                                            transition: { duration: 0.3, delay: 0.15 },
-                                        }}
-                                    >
-                                        <div className="flex items-center space-x-2 text-gray-300">
-                                            <User size={16} />
-                                            <span className="text-sm">{author}</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2 text-gray-300">
-                                            <Calendar size={16} />
-                                            <span className="text-sm">{year}</span>
-                                        </div>
-                                    </motion.div>
-
                                     {/* Description */}
                                     <motion.p
-                                        className="text-gray-300 text-sm leading-relaxed mb-6"
+                                        className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6"
                                         initial={{ y: 8, opacity: 0 }}
                                         whileHover={{
                                             y: 0,
@@ -252,7 +234,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
 
                                     {/* Tags */}
                                     <motion.div
-                                        className="flex flex-wrap gap-2"
+                                        className="flex flex-wrap gap-1.5 sm:gap-2"
                                         initial={{ y: 8, opacity: 0 }}
                                         whileHover={{
                                             y: 0,
@@ -267,7 +249,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
                                         {tags.map((tag, index) => (
                                             <motion.span
                                                 key={index}
-                                                className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/30"
+                                                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-white/20 backdrop-blur-sm text-white text-[0.6rem] sm:text-xs rounded-full border border-white/30"
                                                 whileHover={{
                                                     scale: 1.05,
                                                     backgroundColor: 'rgba(255, 255, 255, 0.3)',
@@ -288,7 +270,7 @@ const HeroProfileCard: React.FC<ProfileCardProps> = ({
 
                     {/* 3D Shadow Effect */}
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-3xl blur-xl -z-10"
+                        className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl sm:rounded-3xl blur-xl -z-10"
                         style={{
                             x: useTransform(x, [-300, 300], [4, -4]),
                             y: useTransform(y, [-300, 300], [2, 8]),

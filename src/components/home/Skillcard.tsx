@@ -116,9 +116,9 @@ const SkillPreview = () => {
 
     return (
         <div className="min-h-screen py-10">
-            <section ref={containerRef} className="px-8">
+            <section ref={containerRef} className="px-4 sm:px-6 md:px-8">
                 <div className="max-w-7xl mx-auto relative">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
                         {cards.map((card, index) => (
                             <AnimatedCard
                                 key={card.id}

@@ -17,6 +17,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ texts, className = '' }) =>
       speed={50}
       className={className}
       repeat={Infinity}
+      cursor={true}
     />
   );
 };

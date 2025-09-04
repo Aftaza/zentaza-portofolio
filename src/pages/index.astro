@@ -12,7 +12,7 @@ import { portofolioItems } from '@/lib/allData';
 <MainLayout title="Home" description="Welcome to Zentaza's portfolio website">
     <!-- Hero Section with Grid Background -->
     <GridBackground
-        className="w-full py-10 md:py-12 flex items-center"
+        className="w-full py-8 sm:py-10 md:py-12 flex items-center"
         gridSize={40}
         showFade={true}
         fadeIntensity={10}
@@ -30,15 +30,15 @@ import { portofolioItems } from '@/lib/allData';
     />
 
     <!-- Skills Preview -->
-    <section class="py-16">
+    <section class="py-12 sm:py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">What I Do</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">What I Do</h2>
             <SkillPreview client:visible />
         </div>
     </section>
 
     <!-- 3D Portfolio Carousel -->
-    <section class="py-16 bg-gradient-to-b from-background to-muted/30">
+    <section class="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
         <Carousel3D 
             items={portofolioItems}
             title="Featured Projects"
@@ -49,4 +49,5 @@ import { portofolioItems } from '@/lib/allData';
     </section>
 
     <AnimatedCTA client:visible />
+
 </MainLayout>

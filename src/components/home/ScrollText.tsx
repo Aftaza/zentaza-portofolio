@@ -96,7 +96,7 @@ const ScrollControlledTyping: React.FC<ScrollControlledTypingProps> = ({
     let charIndex = 0;
 
     return (
-        <div ref={targetRef} className="relative h-[250vh]">
+        <div ref={targetRef} className="relative h-[200vh] sm:h-[250vh]">
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
                 <motion.div
                     style={{ scale, opacity }}
@@ -104,23 +104,23 @@ const ScrollControlledTyping: React.FC<ScrollControlledTypingProps> = ({
                 />
                 <Particles />
 
-                {/* Decorative elements */}
+                {/* Decorative elements - hidden on mobile for better performance */}
                 <motion.div
-                    className="absolute top-20 left-20 w-32 h-32 rounded-full"
+                    className="absolute top-10 left-10 w-16 h-16 sm:top-20 sm:left-20 sm:w-32 sm:h-32 rounded-full hidden sm:block"
                     animate={{ x: [0, 50, -30, 0], y: [0, -30, 20, 0], scale: [1, 1.2, 0.8, 1] }}
                     transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <motion.div
-                    className="absolute bottom-20 right-20 w-24 h-24 rounded-full bg-gradient-to-br from-green-500/20 to-yellow-500/20 blur-xl"
+                    className="absolute bottom-10 right-10 w-12 h-12 sm:bottom-20 sm:right-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-green-500/20 to-yellow-500/20 blur-xl hidden sm:block"
                     animate={{ x: [0, -40, 30, 0], y: [0, 25, -15, 0], scale: [1, 0.8, 1.3, 1] }}
                     transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
                 />
 
-                <div className="relative z-10 flex flex-col justify-between items-center w-full max-w-6xl h-full p-6 md:p-8">
+                <div className="relative z-10 flex flex-col justify-between items-center w-full max-w-6xl h-full p-4 sm:p-6 md:p-8">
                     
                     <div className="flex-grow flex items-center justify-center">
                         <motion.p
-                            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight flex flex-wrap justify-center items-center text-center"
+                            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight flex flex-wrap justify-center items-center text-center"
                             aria-hidden="true"
                         >
                             {/* [FIX UTAMA] Lakukan map pada array 'words' */}
@@ -138,7 +138,7 @@ const ScrollControlledTyping: React.FC<ScrollControlledTypingProps> = ({
                     </div>
 
                     <motion.div
-                        className="w-full max-w-sm text-center"
+                        className="w-full max-w-xs sm:max-w-sm text-center"
                         style={{ opacity }}
                     >
                         <div className="w-full h-1 bg-background/20 rounded-full overflow-hidden">
@@ -150,7 +150,7 @@ const ScrollControlledTyping: React.FC<ScrollControlledTypingProps> = ({
                                 }}
                             />
                         </div>
-                        <p className="text-foreground/60 text-sm mt-2 font-medium">
+                        <p className="text-foreground/60 text-xs sm:text-sm mt-2 font-medium">
                             Scroll to reveal the message
                         </p>
                     </motion.div>

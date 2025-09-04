@@ -44,21 +44,21 @@ export function AnimatedHero() {
             initial="hidden"
             animate="visible"
         >
-            <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
                 {/* Kolom Kiri */}
-                <div className="flex-1 text-center lg:text-left">
-                    <motion.div variants={itemVariants} className="flex items-start gap-3 mb-6">
-                        <span className="text-4xl md:text-6xl text-start font-bold">Hi, I'm</span>
-                        <AuroraText text="Zentaza" />
+                <div className="flex-1 w-full text-center lg:text-left">
+                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start justify-center lg:justify-start gap-3 mb-6">
+                        <span className="text-4xl md:text-5xl lg:text-6xl font-bold">Hi, I'm</span>
+                        <AuroraText text="Zentaza" className="text-4xl md:text-5xl lg:text-6xl" />
                     </motion.div>
 
                     <motion.div
                         variants={itemVariants}
-                        className="h-20 md:h-24 mb-8 flex items-center justify-center lg:justify-start"
+                        className="h-auto min-h-[6rem] md:min-h-[7rem] lg:min-h-[8rem] mb-8 flex items-center justify-center lg:justify-start"
                     >
                         <AnimatedText 
                             texts={specializations}
-                            className="text-2xl md:text-3xl text-muted-foreground max-w-2xl leading-tight"
+                            className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-2xl leading-tight"
                         />
                     </motion.div>
 
@@ -70,7 +70,7 @@ export function AnimatedHero() {
                             href="/portfolio"
                             className={
                                 buttonVariants({ variant: 'shine', size: 'lg' }) +
-                                ' flex items-center'
+                                ' flex items-center justify-center'
                             }
                         >
                             View My Work <ArrowRight className="ml-2 h-4 w-4" />
@@ -79,7 +79,7 @@ export function AnimatedHero() {
                             href="/contact"
                             className={
                                 buttonVariants({ variant: 'outline', size: 'lg' }) +
-                                ' flex items-center'
+                                ' flex items-center justify-center'
                             }
                         >
                             Get in Touch
