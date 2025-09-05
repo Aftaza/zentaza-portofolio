@@ -2,7 +2,7 @@
 import MainLayout from '@/layouts/MainLayout.astro';
 import { DescriptionSection } from '@/components/about/DescriptionSection';
 import { ExperienceSection } from '@/components/about/ExperienceSection';
-import { SkillsSection } from '@/components/about/SkillsSection';
+import { SkillsSection3D } from '@/components/about/SkillsSection';
 import { motion } from 'framer-motion';
 ---
 
@@ -22,6 +22,6 @@ import { motion } from 'framer-motion';
 
         <DescriptionSection client:visible />
         <ExperienceSection client:visible />
-        <SkillsSection client:visible />
+        <SkillsSection3D client:load />
     </div>
 </MainLayout>
