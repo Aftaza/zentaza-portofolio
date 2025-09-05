@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
-import HeroProfileCard from '@/components/home/ProfileCard';
+import AnimatedProfileCard from '@/components/common/ProfileCard';
 import AuroraText from '@/components/Auroratext';
 import AnimatedText from '@/components/common/AnimatedText';
 
@@ -89,7 +89,7 @@ export function AnimatedHero() {
 
                 {/* Kolom Kanan */}
                 <motion.div variants={itemVariants} className="flex-1 w-full">
-                    <HeroProfileCard />
+                    <AnimatedProfileCard variant='rectangular' />
                 </motion.div>
             </div>
         </motion.div>
