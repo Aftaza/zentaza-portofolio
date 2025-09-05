@@ -40,3 +40,21 @@ export interface Carousel3DProps {
     subtitle?: string;
     tagline?: string;
 }
+
+export interface CertificationImage {
+    src: string;
+    alt: string;
+    title: string;
+    issuer: string;
+    date: string;
+    credentialId?: string;
+    href?: string;
+    target?: '_blank' | '_self' | '_parent' | '_top';
+}
+
+export interface CertificationsMarqueeProps {
+    certifications: CertificationImage[];
+    className?: string;
+    cols?: number; // default is 4
+    onCertificationClick?: (cert: CertificationImage, index: number) => void;
+}
