@@ -4,178 +4,183 @@ import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 ---
 
-<MainLayout title="About" description="Learn more about Zentaza, a Fullstack Developer specializing in multiple domains">
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold mb-8">About Me</h1>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-      <div class="md:col-span-2">
-        <h2 class="text-2xl font-semibold mb-4">My Journey</h2>
-        <p class="text-muted-foreground mb-4">
-          I'm a passionate Fullstack Developer with expertise spanning Software Engineering, Data Science/AI, 
-          Cybersecurity, and IoT. With over 5 years of experience in the tech industry, I've had the opportunity 
-          to work on diverse projects that have shaped my skills and approach to problem-solving.
-        </p>
-        <p class="text-muted-foreground mb-4">
-          My journey began with a Computer Science degree, followed by hands-on experience in startups and 
-          enterprise environments. I've developed a unique ability to bridge the gap between technical 
-          implementation and business requirements.
-        </p>
-        <p class="text-muted-foreground">
-          When I'm not coding, you can find me contributing to open-source projects, writing technical articles, 
-          or exploring the latest advancements in AI and cybersecurity.
-        </p>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="bg-muted rounded-full w-48 h-48 mb-4 flex items-center justify-center">
-          <span class="text-4xl">👤</span>
+<MainLayout
+    title="About"
+    description="Learn more about Zentaza, a Fullstack Developer specializing in multiple domains"
+>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold mb-8">About Me</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="md:col-span-2">
+                <h2 class="text-2xl font-semibold mb-4">My Journey</h2>
+                <p class="text-muted-foreground mb-4">
+                    I'm a passionate Fullstack Developer with expertise spanning Software
+                    Engineering, Data Science/AI, Cybersecurity, and IoT. With over 5 years of
+                    experience in the tech industry, I've had the opportunity to work on diverse
+                    projects that have shaped my skills and approach to problem-solving.
+                </p>
+                <p class="text-muted-foreground mb-4">
+                    My journey began with a hobby in high school, then pursuing a bachelor's degree
+                    in Computer Engineering, followed by indirect practical experience in startups and
+                    large companies. I have developed a unique ability to bridge the gap between
+                    technical implementation and business requirements.
+                </p>
+                <p class="text-muted-foreground">
+                    When I'm not coding, you can find me contributing to open-source projects,
+                    writing technical articles, or exploring the latest advancements in AI and
+                    cybersecurity.
+                </p>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="/assets/profile.webp" class="bg-muted rounded-full w-48 h-48 mb-4 flex items-center justify-center">
+                <Button asChild variant="outline">
+                    <a href="/cv.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download CV
+                    </a>
+                </Button>
+            </div>
         </div>
-        <Button asChild variant="outline">
-          <a href="/cv.pdf" download>
-            <Download class="mr-2 h-4 w-4" />
-            Download CV
-          </a>
-        </Button>
-      </div>
+
+        <!-- Experience Timeline -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Experience</h2>
+            <div class="space-y-6">
+                <div class="border-l-2 border-primary pl-4 py-1">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <h3 class="text-xl font-medium">Senior Fullstack Developer</h3>
+                        <span class="text-sm text-muted-foreground">2022 - Present</span>
+                    </div>
+                    <p class="text-primary">Tech Innovations Inc.</p>
+                    <p class="text-muted-foreground mt-2">
+                        Leading development of scalable web applications using React, Node.js, and
+                        cloud technologies. Implemented CI/CD pipelines and mentored junior
+                        developers.
+                    </p>
+                </div>
+                <div class="border-l-2 border-primary pl-4 py-1">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <h3 class="text-xl font-medium">Software Engineer</h3>
+                        <span class="text-sm text-muted-foreground">2020 - 2022</span>
+                    </div>
+                    <p class="text-primary">Digital Solutions Ltd.</p>
+                    <p class="text-muted-foreground mt-2">
+                        Developed and maintained multiple client projects using Python, Django, and
+                        React. Integrated third-party APIs and implemented security best practices.
+                    </p>
+                </div>
+                <div class="border-l-2 border-primary pl-4 py-1">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <h3 class="text-xl font-medium">Junior Developer</h3>
+                        <span class="text-sm text-muted-foreground">2018 - 2020</span>
+                    </div>
+                    <p class="text-primary">StartUp Ventures</p>
+                    <p class="text-muted-foreground mt-2">
+                        Built MVPs for startup clients using various technologies. Gained experience
+                        in full development lifecycle from conception to deployment.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">Skills & Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-card rounded-lg p-6 border border-border">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="mr-2">💻</span> Software Engineering
+                    </h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>JavaScript/TypeScript</span>
+                            <span class="text-muted-foreground">Expert</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>React/Vue</span>
+                            <span class="text-muted-foreground">Expert</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Node.js/Python</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Cloud (AWS/GCP)</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-card rounded-lg p-6 border border-border">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="mr-2">📈</span> Data Science & AI
+                    </h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Python (Pandas, NumPy)</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Machine Learning</span>
+                            <span class="text-muted-foreground">Intermediate</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>TensorFlow/PyTorch</span>
+                            <span class="text-muted-foreground">Intermediate</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Data Visualization</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-card rounded-lg p-6 border border-border">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="mr-2">🔒</span> Cybersecurity
+                    </h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>OWASP Top 10</span>
+                            <span class="text-muted-foreground">Expert</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Secure Coding</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Penetration Testing</span>
+                            <span class="text-muted-foreground">Intermediate</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Compliance (GDPR, HIPAA)</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-card rounded-lg p-6 border border-border">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="mr-2">🌐</span> IoT Solutions
+                    </h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Embedded Systems</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Arduino/Raspberry Pi</span>
+                            <span class="text-muted-foreground">Expert</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>MQTT/CoAP Protocols</span>
+                            <span class="text-muted-foreground">Advanced</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Edge Computing</span>
+                            <span class="text-muted-foreground">Intermediate</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <!-- Experience Timeline -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6">Experience</h2>
-      <div class="space-y-6">
-        <div class="border-l-2 border-primary pl-4 py-1">
-          <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-            <h3 class="text-xl font-medium">Senior Fullstack Developer</h3>
-            <span class="text-sm text-muted-foreground">2022 - Present</span>
-          </div>
-          <p class="text-primary">Tech Innovations Inc.</p>
-          <p class="text-muted-foreground mt-2">
-            Leading development of scalable web applications using React, Node.js, and cloud technologies. 
-            Implemented CI/CD pipelines and mentored junior developers.
-          </p>
-        </div>
-        <div class="border-l-2 border-primary pl-4 py-1">
-          <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-            <h3 class="text-xl font-medium">Software Engineer</h3>
-            <span class="text-sm text-muted-foreground">2020 - 2022</span>
-          </div>
-          <p class="text-primary">Digital Solutions Ltd.</p>
-          <p class="text-muted-foreground mt-2">
-            Developed and maintained multiple client projects using Python, Django, and React. 
-            Integrated third-party APIs and implemented security best practices.
-          </p>
-        </div>
-        <div class="border-l-2 border-primary pl-4 py-1">
-          <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-            <h3 class="text-xl font-medium">Junior Developer</h3>
-            <span class="text-sm text-muted-foreground">2018 - 2020</span>
-          </div>
-          <p class="text-primary">StartUp Ventures</p>
-          <p class="text-muted-foreground mt-2">
-            Built MVPs for startup clients using various technologies. Gained experience in full development 
-            lifecycle from conception to deployment.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section>
-      <h2 class="text-2xl font-semibold mb-6">Skills & Expertise</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-card rounded-lg p-6 border border-border">
-          <h3 class="text-xl font-semibold mb-4 flex items-center">
-            <span class="mr-2">💻</span> Software Engineering
-          </h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>JavaScript/TypeScript</span>
-              <span class="text-muted-foreground">Expert</span>
-            </li>
-            <li class="flex justify-between">
-              <span>React/Vue</span>
-              <span class="text-muted-foreground">Expert</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Node.js/Python</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Cloud (AWS/GCP)</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-card rounded-lg p-6 border border-border">
-          <h3 class="text-xl font-semibold mb-4 flex items-center">
-            <span class="mr-2">📈</span> Data Science & AI
-          </h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>Python (Pandas, NumPy)</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Machine Learning</span>
-              <span class="text-muted-foreground">Intermediate</span>
-            </li>
-            <li class="flex justify-between">
-              <span>TensorFlow/PyTorch</span>
-              <span class="text-muted-foreground">Intermediate</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Data Visualization</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-card rounded-lg p-6 border border-border">
-          <h3 class="text-xl font-semibold mb-4 flex items-center">
-            <span class="mr-2">🔒</span> Cybersecurity
-          </h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>OWASP Top 10</span>
-              <span class="text-muted-foreground">Expert</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Secure Coding</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Penetration Testing</span>
-              <span class="text-muted-foreground">Intermediate</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Compliance (GDPR, HIPAA)</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-card rounded-lg p-6 border border-border">
-          <h3 class="text-xl font-semibold mb-4 flex items-center">
-            <span class="mr-2">🌐</span> IoT Solutions
-          </h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>Embedded Systems</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Arduino/Raspberry Pi</span>
-              <span class="text-muted-foreground">Expert</span>
-            </li>
-            <li class="flex justify-between">
-              <span>MQTT/CoAP Protocols</span>
-              <span class="text-muted-foreground">Advanced</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Edge Computing</span>
-              <span class="text-muted-foreground">Intermediate</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
 </MainLayout>
