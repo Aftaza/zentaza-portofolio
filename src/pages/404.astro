@@ -1,21 +1,20 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 ---
 
 <MainLayout title="Page Not Found" description="The page you're looking for doesn't exist">
-  <div class="max-w-2xl mx-auto text-center py-16">
-    <h1 class="text-6xl font-bold mb-4">404</h1>
-    <h2 class="text-3xl font-semibold mb-6">Page Not Found</h2>
-    <p class="text-muted-foreground mb-8">
-      Sorry, the page you're looking for doesn't exist or has been moved.
-    </p>
-    <Button asChild>
-      <a href="/">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Home
-      </a>
-    </Button>
-  </div>
+    <div class="max-w-2xl mx-auto text-center py-16">
+        <h1 class="text-6xl font-bold mb-4">404</h1>
+        <h2 class="text-3xl font-semibold mb-6">Page Not Found</h2>
+        <p class="text-muted-foreground mb-8">
+            Sorry, the page you're looking for doesn't exist or has been moved.
+        </p>
+        
+        <a href="/" class={buttonVariants({ variant: 'shine', size: 'icon' }) + 'flex items-center gap-1 p-2'}>
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+        </a>
+    </div>
 </MainLayout>
