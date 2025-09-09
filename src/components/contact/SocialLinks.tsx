@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Download } from 'lucide-react';
+import { FaTiktok, FaGithub, FaLinkedin} from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
 
 const SocialLinks = () => {
     const socialLinks = [
         {
             name: 'GitHub',
-            icon: <Github className="h-5 w-5" />,
-            url: 'https://github.com',
+            icon: <FaGithub className="h-5 w-5" />,
+            url: 'https://github.com/Aftaza',
         },
         {
             name: 'LinkedIn',
-            icon: <Linkedin className="h-5 w-5" />,
-            url: 'https://linkedin.com',
+            icon: <FaLinkedin className="h-5 w-5" />,
+            url: 'https://id.linkedin.com/in/m-alfian-taftazani-2a456124b',
         },
         {
-            name: 'Twitter',
-            icon: <Twitter className="h-5 w-5" />,
-            url: 'https://twitter.com',
+            name: 'Tiktok',
+            icon: <FaTiktok className="h-5 w-5" />,
+            url: 'https://www.tiktok.com/@zentaza_official',
         },
     ];
 

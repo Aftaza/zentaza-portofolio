@@ -38,7 +38,7 @@ const ContactHero = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     <Button size="lg" asChild>
-                        <a href="mailto:contact@zentaza.com">
+                        <a href="mailto:zen.bisnis17@gmail.com">
                             Get in Touch
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </a>

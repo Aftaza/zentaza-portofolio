@@ -7,19 +7,19 @@ const ContactInfo = () => {
         {
             icon: <Mail className="h-6 w-6 text-primary" />,
             title: 'Email',
-            content: 'contact@zentaza.com',
-            href: 'mailto:contact@zentaza.com',
+            content: 'zen.bisnis17@gmail.com',
+            href: 'mailto:zen.bisnis17@gmail.com',
         },
         {
             icon: <Phone className="h-6 w-6 text-primary" />,
             title: 'Phone',
-            content: '+1 (234) 567-890',
-            href: 'tel:+1234567890',
+            content: '+62-857-9166-3369',
+            href: 'tel:+6285791663369',
         },
         {
             icon: <MapPin className="h-6 w-6 text-primary" />,
             title: 'Location',
-            content: 'San Francisco, CA\nUnited States',
+            content: 'Malang, Indonesia',
         },
     ];
 
@@ -47,7 +47,7 @@ const ContactInfo = () => {
                             {detail.href ? (
                                 <a
                                     href={detail.href}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    className="text-muted-foreground hover:text-accent hover:underline transition-colors ease-in-out duration-800"
                                 >
                                     {detail.content.split('\n').map((line, i) => (
                                         <React.Fragment key={i}>
