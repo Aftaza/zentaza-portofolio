@@ -1,4 +1,43 @@
-import type { Carousel3DItem, CertificationImage } from './data';
+import type { BlogPost, Carousel3DItem, CertificationImage } from './data';
+
+export const blogPosts: BlogPost[] = [
+    {
+        id: 1,
+        title: 'The Future of Edge Computing in IoT',
+        date: 'May 15, 2023',
+        excerpt:
+            'Exploring how edge computing is transforming the IoT landscape by reducing latency and improving data processing efficiency.',
+        tags: ['IoT', 'Edge Computing'],
+        slug: 'article-1',
+    },
+    {
+        id: 2,
+        title: 'Securing Microservices: Best Practices',
+        date: 'April 3, 2023',
+        excerpt:
+            'A comprehensive guide to implementing security measures in microservices architectures, including authentication, authorization, and data protection.',
+        tags: ['Cybersecurity', 'Microservices'],
+        slug: 'article-2',
+    },
+    {
+        id: 3,
+        title: 'Building Real-time Dashboards with WebSocket',
+        date: 'March 22, 2023',
+        excerpt:
+            'Learn how to create responsive real-time dashboards using WebSocket technology for live data visualization.',
+        tags: ['Software Engineering', 'WebSocket'],
+        slug: 'article-3',
+    },
+    {
+        id: 4,
+        title: 'Machine Learning Model Optimization Techniques',
+        date: 'February 10, 2023',
+        excerpt:
+            'Practical approaches to optimize machine learning models for better performance and reduced resource consumption.',
+        tags: ['Data Science', 'Machine Learning'],
+        slug: 'article-4',
+    },
+];
 
 export const portofolioItems: Carousel3DItem[] = [
     {
@@ -11,7 +50,7 @@ export const portofolioItems: Carousel3DItem[] = [
         imageUrl: '/images/project-ecommerce.jpg',
         link: '/portofolio/project-1',
         github: 'http://github.com/',
-        demo: 'https://demo.zentaza.online/'
+        demo: 'https://demo.zentaza.online/',
     },
     {
         id: 2,
@@ -23,7 +62,7 @@ export const portofolioItems: Carousel3DItem[] = [
         imageUrl: '/images/project-ai-dashboard.jpg',
         link: '/portofolio/project-1',
         github: 'http://github.com/',
-        demo: 'https://demo.zentaza.online/'
+        demo: 'https://demo.zentaza.online/',
     },
     {
         id: 3,
@@ -35,7 +74,7 @@ export const portofolioItems: Carousel3DItem[] = [
         imageUrl: '/images/project-security.jpg',
         link: '/portofolio/project-1',
         github: 'http://github.com/',
-        demo: 'https://demo.zentaza.online/'
+        demo: 'https://demo.zentaza.online/',
     },
     {
         id: 4,
@@ -47,7 +86,7 @@ export const portofolioItems: Carousel3DItem[] = [
         imageUrl: '/images/project-iot.jpg',
         link: '/portofolio/project-1',
         github: 'http://github.com/',
-        demo: 'https://demo.zentaza.online/'
+        demo: 'https://demo.zentaza.online/',
     },
     {
         id: 5,
@@ -59,7 +98,7 @@ export const portofolioItems: Carousel3DItem[] = [
         imageUrl: '/images/project-social.jpg',
         link: '/portofolio/project-1',
         github: 'http://github.com/',
-        demo: 'https://demo.zentaza.online/'
+        demo: 'https://demo.zentaza.online/',
     },
 ];
 
@@ -201,4 +240,10 @@ export const getVerifiedCertifications = () => {
 
 export const getAllIssuers = () => {
     return [...new Set(certifications.map((cert) => cert.issuer))];
+};
+
+// Helper functions for blog data
+export const getAllTags = () => {
+    const allTags = blogPosts.flatMap((post) => post.tags);
+    return [...new Set(allTags)];
 };

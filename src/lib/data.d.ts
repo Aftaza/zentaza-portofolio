@@ -70,3 +70,12 @@ export interface SkillCardItem {
     skills: { name: string; skillIcon: IconType[] }[];
     image: string;
 }
+
+export interface BlogPost {
+    id: number;
+    title: string;
+    date: string;
+    excerpt: string;
+    tags: string[];
+    slug: string;
+}
