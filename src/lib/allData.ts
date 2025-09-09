@@ -9,7 +9,7 @@ export const portofolioItems: Carousel3DItem[] = [
             'Modern e-commerce solution built with React, Node.js, and MongoDB. Features real-time inventory management, payment integration, and responsive design.',
         tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
         imageUrl: '/images/project-ecommerce.jpg',
-        link: '/portfolio/ecommerce-platform',
+        link: '/portofolio/project-1',
         github: 'http://github.com/',
         demo: 'https://demo.zentaza.online/'
     },
@@ -21,7 +21,7 @@ export const portofolioItems: Carousel3DItem[] = [
             'Machine learning dashboard for business intelligence with predictive analytics, real-time data visualization, and automated reporting.',
         tags: ['Python', 'TensorFlow', 'React', 'D3.js'],
         imageUrl: '/images/project-ai-dashboard.jpg',
-        link: '/portfolio/ai-dashboard',
+        link: '/portofolio/project-1',
         github: 'http://github.com/',
         demo: 'https://demo.zentaza.online/'
     },
@@ -33,7 +33,7 @@ export const portofolioItems: Carousel3DItem[] = [
             'Advanced security monitoring platform with threat detection, vulnerability assessment, and incident response automation.',
         tags: ['Python', 'Docker', 'Elasticsearch', 'React'],
         imageUrl: '/images/project-security.jpg',
-        link: '/portfolio/security-system',
+        link: '/portofolio/project-1',
         github: 'http://github.com/',
         demo: 'https://demo.zentaza.online/'
     },
@@ -45,7 +45,7 @@ export const portofolioItems: Carousel3DItem[] = [
             'Centralized IoT management system for smart home devices with real-time monitoring, automation, and mobile app integration.',
         tags: ['Arduino', 'React Native', 'Node.js', 'MQTT'],
         imageUrl: '/images/project-iot.jpg',
-        link: '/portfolio/iot-hub',
+        link: '/portofolio/project-1',
         github: 'http://github.com/',
         demo: 'https://demo.zentaza.online/'
     },
@@ -57,7 +57,7 @@ export const portofolioItems: Carousel3DItem[] = [
             'Comprehensive social media management platform with content scheduling, analytics, and multi-platform integration.',
         tags: ['Vue.js', 'Laravel', 'Redis', 'API Integration'],
         imageUrl: '/images/project-social.jpg',
-        link: '/portfolio/social-media-tool',
+        link: '/portofolio/project-1',
         github: 'http://github.com/',
         demo: 'https://demo.zentaza.online/'
     },
