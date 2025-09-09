@@ -10,6 +10,8 @@ export const portofolioItems: Carousel3DItem[] = [
         tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
         imageUrl: '/images/project-ecommerce.jpg',
         link: '/portfolio/ecommerce-platform',
+        github: 'http://github.com/',
+        demo: 'https://demo.zentaza.online/'
     },
     {
         id: 2,
@@ -20,6 +22,8 @@ export const portofolioItems: Carousel3DItem[] = [
         tags: ['Python', 'TensorFlow', 'React', 'D3.js'],
         imageUrl: '/images/project-ai-dashboard.jpg',
         link: '/portfolio/ai-dashboard',
+        github: 'http://github.com/',
+        demo: 'https://demo.zentaza.online/'
     },
     {
         id: 3,
@@ -30,6 +34,8 @@ export const portofolioItems: Carousel3DItem[] = [
         tags: ['Python', 'Docker', 'Elasticsearch', 'React'],
         imageUrl: '/images/project-security.jpg',
         link: '/portfolio/security-system',
+        github: 'http://github.com/',
+        demo: 'https://demo.zentaza.online/'
     },
     {
         id: 4,
@@ -40,6 +46,8 @@ export const portofolioItems: Carousel3DItem[] = [
         tags: ['Arduino', 'React Native', 'Node.js', 'MQTT'],
         imageUrl: '/images/project-iot.jpg',
         link: '/portfolio/iot-hub',
+        github: 'http://github.com/',
+        demo: 'https://demo.zentaza.online/'
     },
     {
         id: 5,
@@ -50,6 +58,8 @@ export const portofolioItems: Carousel3DItem[] = [
         tags: ['Vue.js', 'Laravel', 'Redis', 'API Integration'],
         imageUrl: '/images/project-social.jpg',
         link: '/portfolio/social-media-tool',
+        github: 'http://github.com/',
+        demo: 'https://demo.zentaza.online/'
     },
 ];
 

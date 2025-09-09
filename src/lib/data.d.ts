@@ -32,6 +32,8 @@ export interface Carousel3DItem {
     tags: string[];
     imageUrl: string;
     link: string;
+    github: string;
+    demo: string;
 }
 
 export interface Carousel3DProps {
