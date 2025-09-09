@@ -1,3 +1,6 @@
+import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons/lib";
+
 export interface ProfileCardProps {
     image?: string;
     title?: string;
@@ -57,4 +60,11 @@ export interface CertificationsMarqueeProps {
     className?: string;
     cols?: number; // default is 4
     onCertificationClick?: (cert: CertificationImage, index: number) => void;
+}
+
+export interface SkillCardItem {
+    icon: LucideIcon;
+    title: string;
+    skills: { name: string; skillIcon: IconType[] }[];
+    image: string;
 }

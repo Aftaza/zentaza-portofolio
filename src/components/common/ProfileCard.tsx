@@ -115,20 +115,20 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
 
     // Dynamic classes based on variant
     const containerClasses = variant === 'circular' 
-        ? "relative w-full max-w-sm mx-auto cursor-pointer select-none rounded-full aspect-square"
-        : "relative w-full max-w-md mx-auto cursor-pointer select-none rounded-2xl sm:rounded-3xl";
+        ? "relative w-full max-w-[200px] md:max-w-sm mx-auto cursor-pointer select-none rounded-full aspect-square"
+        : "relative w-full max-w-xs md:max-w-md mx-auto cursor-pointer select-none rounded-xl md:rounded-2xl";
 
     const cardClasses = variant === 'circular'
         ? "relative group rounded-full aspect-square"
-        : "relative group rounded-2xl sm:rounded-3xl";
+        : "relative group rounded-xl md:rounded-2xl";
 
     const cardContainerClasses = variant === 'circular'
         ? "relative bg-white rounded-full overflow-hidden aspect-square"
-        : "relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden";
+        : "relative bg-white rounded-xl md:rounded-2xl overflow-hidden";
 
     const shimmerClasses = variant === 'circular'
         ? "absolute inset-0 overflow-hidden rounded-full"
-        : "absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl";
+        : "absolute inset-0 overflow-hidden rounded-xl md:rounded-2xl";
 
     const imageAspectClasses = variant === 'circular'
         ? "relative aspect-square overflow-hidden rounded-full"
@@ -136,12 +136,12 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
 
     const shadowClasses = variant === 'circular'
         ? "absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-full blur-xl -z-10"
-        : "absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl sm:rounded-3xl blur-xl -z-10";
+        : "absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl md:rounded-2xl blur-xl -z-10";
 
     const renderRectangularContent = () => (
-        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6">
             <motion.div
-                initial={{ y: 16, opacity: 0.9 }}
+                initial={{ y: 12, opacity: 0.9 }}
                 whileHover={{
                     y: 0,
                     opacity: 1,
@@ -149,9 +149,9 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                 }}
             >
                 <motion.h1
-                    className="text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2 leading-tight"
                     whileHover={{
-                        x: 4,
+                        x: 3,
                         transition: { duration: 0.3 },
                     }}
                 >
@@ -159,9 +159,9 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                 </motion.h1>
 
                 <motion.p
-                    className="text-base sm:text-lg text-gray-200 mb-3 sm:mb-4"
+                    className="text-xs sm:text-sm md:text-base text-gray-200 mb-2 sm:mb-3"
                     whileHover={{
-                        x: 2,
+                        x: 1.5,
                         transition: { duration: 0.3, delay: 0.1 },
                     }}
                 >
@@ -169,8 +169,8 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                 </motion.p>
 
                 <motion.p
-                    className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6"
-                    initial={{ y: 8, opacity: 0 }}
+                    className="text-gray-300 text-[0.6rem] xs:text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4"
+                    initial={{ y: 6, opacity: 0 }}
                     whileHover={{
                         y: 0,
                         opacity: 1,
@@ -185,8 +185,8 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                 </motion.p>
 
                 <motion.div
-                    className="flex flex-wrap gap-1.5 sm:gap-2"
-                    initial={{ y: 8, opacity: 0 }}
+                    className="flex flex-wrap gap-1 sm:gap-1.5"
+                    initial={{ y: 6, opacity: 0 }}
                     whileHover={{
                         y: 0,
                         opacity: 1,
@@ -200,7 +200,7 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                     {tags.map((tag, index) => (
                         <motion.span
                             key={index}
-                            className="px-2 py-1 sm:px-3 sm:py-1.5 bg-white/20 backdrop-blur-sm text-white text-[0.6rem] sm:text-xs rounded-full border border-white/30"
+                            className="px-1.5 py-0.5 sm:px-2 sm:py-1 md:px-3 md:py-1.5 bg-white/20 backdrop-blur-sm text-white text-[0.5rem] xs:text-[0.6rem] sm:text-xs rounded-full border border-white/30"
                             whileHover={{
                                 scale: 1.05,
                                 backgroundColor: 'rgba(255, 255, 255, 0.3)',
@@ -219,7 +219,7 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
     );
 
     return (
-        <div className="flex items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="flex items-center justify-center p-2 sm:p-4 md:p-6">
             <motion.div
                 ref={cardRef}
                 style={{ 
@@ -236,7 +236,7 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                     <motion.div
                         className={cardContainerClasses}
                         whileHover={{
-                            boxShadow: '0 25px 50px rgba(147, 51, 234, 0.25)',
+                            boxShadow: '0 20px 40px rgba(147, 51, 234, 0.25)',
                         }}
                         transition={{ duration: 0.3 }}
                     >
@@ -261,16 +261,16 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                                 src={image}
                                 alt={title}
                                 className={variant === 'circular' 
-                                    ? "w-full h-full object-cover object-top scale-150 translate-y-8" 
+                                    ? "w-full h-full object-cover object-top scale-125 translate-y-4 md:translate-y-8" 
                                     : "w-full h-full object-cover"
                                 }
                                 whileHover={{
-                                    scale: 1.1,
+                                    scale: 1.05,
                                     transition: { duration: 0.7, ease: 'easeInOut' },
                                 }}
                                 style={{
                                     transformStyle: 'preserve-3d',
-                                    transform: 'translateZ(50px)',
+                                    transform: 'translateZ(30px)',
                                 }}
                             />
 
@@ -288,11 +288,11 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
 
                             {/* Category Badge */}
                             {variant === 'rectangular' && (
-                                <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+                                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 md:top-6 md:left-6">
                                     <motion.span
-                                        className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/90 backdrop-blur-sm text-gray-800 text-xs sm:text-sm font-semibold rounded-full shadow-lg"
+                                        className="px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-white/90 backdrop-blur-sm text-gray-800 text-[0.6rem] xs:text-xs sm:text-sm font-semibold rounded-full shadow-md md:shadow-lg"
                                         whileHover={{
-                                            scale: 1.1,
+                                            scale: 1.05,
                                             backgroundColor: 'rgba(255, 255, 255, 1)',
                                         }}
                                         transition={{ duration: 0.3 }}
@@ -311,10 +311,10 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                     <motion.div
                         className={shadowClasses}
                         style={{
-                            x: useTransform(x, [-300, 300], [4, -4]),
-                            y: useTransform(y, [-300, 300], [2, 8]),
-                            scale: useTransform(scale, [1, 1.05], [1, 1.1]),
-                            opacity: useTransform(scale, [1, 1.05], [0.6, 0.8]),
+                            x: useTransform(x, [-300, 300], [3, -3]),
+                            y: useTransform(y, [-300, 300], [1.5, 6]),
+                            scale: useTransform(scale, [1, 1.05], [1, 1.05]),
+                            opacity: useTransform(scale, [1, 1.05], [0.5, 0.7]),
                         }}
                     />
                 </motion.div>

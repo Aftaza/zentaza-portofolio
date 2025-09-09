@@ -14,7 +14,7 @@ import { certifications } from '@/lib/allData';
     <div class="max-w-4xl mx-auto">
         <DescriptionSection client:visible />
         <ExperienceSection client:visible />
-        <SkillsSection3D client:visible />
+        <SkillsSection3D client:idle />
         <CertificationsSection 
             client:load 
             certifications={certifications}

@@ -3,18 +3,15 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import { Code, BrainCircuit, ShieldCheck, Router } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-import { cn } from '@/lib/utils'; // Pastikan path ini benar
+import { cn } from '@/lib/utils';
+import type { SkillCardItem } from '@/lib/data';
+import { FaFigma, FaReact, FaLaravel, FaGolang, FaPython, FaGithub, FaDocker, FaNodeJs, FaBug, FaShieldHalved, FaMicrochip, FaServer, FaFileExcel, FaChartPie, FaChartLine, FaClipboardCheck } from 'react-icons/fa6';
+import { PiFramerLogoFill } from "react-icons/pi";
+import { RiNextjsFill } from "react-icons/ri";
+import { SiArduino, SiAstro, SiKalilinux, SiKubernetes, SiMongodb, SiMqtt, SiMysql, SiOwasp, SiPython, SiPytorch, SiRaspberrypi, SiTableau, SiTensorflow } from "react-icons/si";
+import type { IconType } from 'react-icons';
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Tipe data untuk setiap kartu keahlian
-interface SkillCardItem {
-    icon: LucideIcon;
-    title: string;
-    skills: { name: string; level: string }[];
-    image: string;
-}
 
 // Data keahlian Anda, diadaptasi untuk carousel
 const skillData: SkillCardItem[] = [
@@ -22,10 +19,10 @@ const skillData: SkillCardItem[] = [
         icon: Code,
         title: 'Software Engineering',
         skills: [
-            { name: 'JavaScript/TypeScript', level: 'Expert' },
-            { name: 'React/Vue', level: 'Expert' },
-            { name: 'Node.js/Python', level: 'Advanced' },
-            { name: 'Cloud (AWS/GCP)', level: 'Advanced' },
+            { name: 'UI/UX Design', skillIcon: [FaFigma, PiFramerLogoFill] },
+            { name: 'Frontend', skillIcon: [FaReact, RiNextjsFill, SiAstro] },
+            { name: 'Backend', skillIcon: [FaNodeJs, FaLaravel, FaGolang, FaPython] },
+            { name: 'DevOps', skillIcon: [FaGithub, FaDocker, SiKubernetes] },
         ],
         image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
@@ -33,10 +30,10 @@ const skillData: SkillCardItem[] = [
         icon: BrainCircuit,
         title: 'Data Science & AI',
         skills: [
-            { name: 'Python (Pandas, NumPy)', level: 'Advanced' },
-            { name: 'Machine Learning', level: 'Intermediate' },
-            { name: 'TensorFlow/PyTorch', level: 'Intermediate' },
-            { name: 'Data Visualization', level: 'Advanced' },
+            { name: 'Analytics', skillIcon: [SiPython, FaFileExcel] },
+            { name: 'Database', skillIcon: [SiMysql, SiMongodb] },
+            { name: 'ML/DL', skillIcon: [SiTensorflow, SiPytorch] },
+            { name: 'Data Visualization', skillIcon: [FaChartPie, FaChartLine, SiTableau] },
         ],
         image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
@@ -44,10 +41,10 @@ const skillData: SkillCardItem[] = [
         icon: ShieldCheck,
         title: 'Cybersecurity',
         skills: [
-            { name: 'OWASP Top 10', level: 'Expert' },
-            { name: 'Secure Coding', level: 'Advanced' },
-            { name: 'Penetration Testing', level: 'Intermediate' },
-            { name: 'Compliance (GDPR, HIPAA)', level: 'Advanced' },
+            { name: 'Vulnerability (OWASP)', skillIcon: [SiOwasp, FaBug] },
+            { name: 'Secure Coding', skillIcon: [FaShieldHalved] },
+            { name: 'Penetration Testing', skillIcon: [SiKalilinux] },
+            { name: 'Compliance', skillIcon: [FaClipboardCheck] },
         ],
         image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
@@ -55,10 +52,10 @@ const skillData: SkillCardItem[] = [
         icon: Router,
         title: 'IoT Solutions',
         skills: [
-            { name: 'Embedded Systems', level: 'Advanced' },
-            { name: 'Arduino/Raspberry Pi', level: 'Expert' },
-            { name: 'MQTT/CoAP Protocols', level: 'Advanced' },
-            { name: 'Edge Computing', level: 'Intermediate' },
+            { name: 'Embedded Systems', skillIcon: [FaMicrochip] },
+            { name: 'Hardware Platform', skillIcon: [SiArduino, SiRaspberrypi] },
+            { name: 'IoT Protocols', skillIcon: [SiMqtt] },
+            { name: 'Edge Computing', skillIcon: [FaServer] },
         ],
         image: 'https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
@@ -129,6 +126,20 @@ export function SkillsSection3D() {
         return () => ctx.revert();
     }, [isDesktop]);
 
+    // Function untuk render skill icons
+    const renderSkillIcons = (icons: IconType[]) => {
+        return (
+            <div className="flex gap-1">
+                {icons.map((IconComponent, index) => (
+                    <IconComponent 
+                        key={index} 
+                        className="w-4 h-4 text-white/80" 
+                    />
+                ))}
+            </div>
+        );
+    };
+
     // Render kartu
     const renderSkillCards = () =>
         skillData.map((category, index) => (
@@ -158,8 +169,8 @@ export function SkillsSection3D() {
                                     className="flex justify-between items-center text-sm"
                                 >
                                     <span>{skill.name}</span>
-                                    <span className="font-medium px-2 py-0.5 rounded bg-white/10 text-white/80">
-                                        {skill.level}
+                                    <span className="font-medium px-2 py-0.5 rounded bg-white/10 text-white/80 flex items-center">
+                                        {renderSkillIcons(skill.skillIcon)}
                                     </span>
                                 </li>
                             ))}
@@ -206,8 +217,7 @@ export function SkillsSection3D() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5 }}
                     >
-                        {/* Re-render card content for mobile without refs */}
-                        <div className="feature-card w-full h-full group">
+                        <div className="feature-card w-full h-[300px] group">
                             <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl">
                                 <img
                                     src={category.image}
@@ -227,8 +237,8 @@ export function SkillsSection3D() {
                                                 className="flex justify-between items-center text-sm"
                                             >
                                                 <span>{skill.name}</span>
-                                                <span className="font-medium px-2 py-0.5 rounded bg-white/10 text-white/80">
-                                                    {skill.level}
+                                                <span className="font-medium px-2 py-0.5 rounded bg-white/10 text-white/80 flex items-center">
+                                                    {renderSkillIcons(skill.skillIcon)}
                                                 </span>
                                             </li>
                                         ))}

@@ -15,11 +15,11 @@ export function DescriptionSection() {
 
     return (
         // Container dengan height yang lebih besar untuk memberikan ruang scroll
-        <div ref={containerRef} className="relative bg-background" style={{ height: '400vh' }}>
+        <div ref={containerRef} className="relative bg-background" style={{ height: '300vh' }}>
             {/* Section yang akan "sticky" di tengah viewport */}
             <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center p-4 bg-background">
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start max-w-6xl w-full"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start max-w-6xl w-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
@@ -32,7 +32,7 @@ export function DescriptionSection() {
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                     >
                         <motion.h2 
-                            className="text-4xl font-semibold mb-6"
+                            className="text-3xl md:text-4xl font-semibold mb-4 md:mb-6"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
@@ -41,7 +41,7 @@ export function DescriptionSection() {
                         </motion.h2>
                         
                         <motion.p 
-                            className="text-muted-foreground mb-6 text-lg leading-relaxed"
+                            className="text-muted-foreground mb-4 md:mb-6 text-base md:text-lg leading-relaxed"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
@@ -70,7 +70,7 @@ export function DescriptionSection() {
                         transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
                     >
                         <motion.div 
-                            className="mb-6"
+                            className="mb-4 md:mb-6 w-full max-w-xs"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
@@ -82,7 +82,7 @@ export function DescriptionSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
                         >
-                            <Button asChild variant="outline" className="w-fit">
+                            <Button asChild variant="outline" className="w-fit text-sm md:text-base">
                                 <a href="/cv.pdf" download>
                                     <Download className="mr-2 h-4 w-4" />
                                     Download CV
@@ -113,8 +113,8 @@ function ScrollRevealParagraph({
 
     // Timing berbeda untuk setiap paragraf
     const delay = index * 0.1; // Delay bertambah untuk setiap paragraf
-    const startProgress = 0.3 + delay;
-    const endProgress = startProgress + 0.25;
+    const startProgress = 0.1 + delay;
+    const endProgress = startProgress + 0.2;
 
     // Transformasi animasi
     const opacity = useTransform(scrollYProgress, [startProgress, endProgress], [0, 1]);
@@ -124,7 +124,7 @@ function ScrollRevealParagraph({
     return (
         <motion.p
             style={{ opacity, y, scale }}
-            className="text-muted-foreground text-lg leading-relaxed"
+            className="text-muted-foreground text-base md:text-lg leading-relaxed"
         >
             {children}
         </motion.p>
