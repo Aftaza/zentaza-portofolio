@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, CircleEllipsis } from 'lucide-react';
 import type { Carousel3DItem } from '@/lib/data';
 import { Badge } from '../ui/badge';
 
@@ -12,9 +12,8 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
     return (
-        <motion.a
+        <motion.div
             className="bg-card rounded-lg border border-border overflow-hidden h-full flex flex-col"
-            href={project.link}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.2 }}
@@ -91,6 +90,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button variant="outline" size="sm" asChild>
                             <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                <CircleEllipsis className="h-4 w-4 mr-1" />
+                                More Detail
+                            </a>
+                        </Button>
+                    </motion.div>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Button variant="outline" size="sm" asChild>
+                            <a href={project.github} target="_blank" rel="noopener noreferrer">
                                 <Github className="h-4 w-4 mr-1" />
                                 Code
                             </a>
@@ -98,7 +105,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button variant="outline" size="sm" asChild>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
                                 <ExternalLink className="h-4 w-4 mr-1" />
                                 Demo
                             </a>
@@ -106,6 +113,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                     </motion.div>
                 </div>
             </div>
-        </motion.a>
+        </motion.div>
     );
 };
