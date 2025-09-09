@@ -1,0 +1,16 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import BlogContainer from '@/components/blog/BlogContainer.tsx';
+---
+
+<MainLayout
+    title="Blog"
+    description="Read my latest articles and thoughts on technology, programming, and innovation"
+>
+    <div class="max-w-4xl mx-auto my-10 md:my-5 px-5 md:px-10">
+        <h1 class="text-3xl md:text-4xl font-bold mb-8">Blog</h1>
+
+        <!-- Blog Container with all functionality -->
+        <BlogContainer client:idle />
+    </div>
+</MainLayout>

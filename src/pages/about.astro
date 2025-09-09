@@ -1,0 +1,27 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { DescriptionSection } from '@/components/about/DescriptionSection';
+import { ExperienceSection } from '@/components/about/ExperienceSection';
+import { SkillsSection3D } from '@/components/about/SkillsSection';
+import { CertificationsSection } from '@/components/about/CertificationSection';
+import { certifications } from '@/lib/allData';
+---
+
+<MainLayout
+    title="About"
+    description="Learn more about Zentaza, a Fullstack Developer specializing in multiple domains"
+>
+    <div class="max-w-4xl mx-auto">
+        <DescriptionSection client:visible />
+        <ExperienceSection client:visible />
+        <SkillsSection3D client:idle />
+        <CertificationsSection 
+            client:load 
+            certifications={certifications}
+            cols={4}
+            onCertificationClick={(cert, index) => {
+                console.log('Certification clicked:', cert.title, 'at index:', index);
+            }}
+        />
+    </div>
+</MainLayout>

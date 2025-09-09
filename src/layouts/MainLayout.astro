@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title ? `${title} - Zentaza Portfolio` : 'Zentaza Portfolio'}</title>
+    {description && <meta name="description" content={description} />
+    <meta name="author" content="Zentaza" />
+    <meta name="keywords" content="portfolio, fullstack developer, software engineer, data science, cybersecurity, IoT" />
+    }
+  </head>
+  <body class="min-h-screen bg-background text-foreground">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

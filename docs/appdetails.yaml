@@ -1,0 +1,104 @@
+app:
+  name: "Zentaza Portfolio Website"
+  description: >
+    Website portofolio pribadi untuk menampilkan karya, pengalaman,
+    dan keahlian seorang Fullstack Developer dengan spesialisasi di
+    bidang Software Engineering, Data Science/AI, Cybersecurity, dan IoT.
+    Dibangun menggunakan AstroJs + TailwindCSS dengan komponen UI dari shadcn/ui
+    agar cepat, interaktif, dan modern.
+  version: "1.1.0"
+
+stakeholders:
+  owner: "Zentaza (Fullstack Developer)"
+  target_audience:
+    - "HR dan Recruiter"
+    - "Hiring Manager"
+    - "Calon Klien Freelance"
+    - "Komunitas Developer"
+
+objectives:
+  - "Menampilkan portofolio proyek lintas bidang secara profesional"
+  - "Meningkatkan personal branding di dunia kerja dan freelance"
+  - "Menyajikan pengalaman pengguna interaktif dengan komponen modern"
+  - "Memudahkan recruiter menghubungi pemilik melalui informasi kontak"
+
+features:
+  core:
+    - name: "Landing Page"
+      description: "Profil singkat, tagline, CTA dengan hero section"
+    - name: "About Me"
+      description: "Latar belakang, pengalaman, keahlian"
+    - name: "Skills Section"
+      description: "Visualisasi skill per kategori (Software Engineer, Data Scientist, Cybersecurity, IoT)"
+    - name: "Portfolio Projects"
+      description: "Daftar proyek dengan ProjectCard (gambar, teknologi, link demo/GitHub)"
+    - name: "Blog/Articles"
+      description: "Tulisan profesional opsional, dengan ArticleCard"
+    - name: "Contact Info"
+      description: "Menampilkan nomor telepon, email, link sosial media"
+    - name: "Resume/CV Download"
+      description: "Tautan unduh CV (PDF) di public/"
+  extra:
+    - name: "Dark/Light Mode"
+      description: "Theme toggle bawaan shadcn/ui"
+    - name: "Search Feature"
+      description: "Pencarian artikel atau proyek"
+    - name: "Testimonials"
+      description: "Feedback dari klien atau rekan kerja"
+    - name: "Certifications"
+      description: "Menampilkan sertifikat resmi (AWS, GCP, AI, dll)"
+
+non_functional_requirements:
+  performance:
+    - "Website harus dimuat < 2 detik pada koneksi 3G"
+    - "Score Lighthouse minimal 90+ di Performance, SEO, Accessibility"
+  ux_ui:
+    - "Gunakan TailwindCSS + shadcn/ui untuk konsistensi UI"
+    - "Website interaktif dengan animasi halus (Framer Motion/GSAP opsional)"
+    - "Hover effect, parallax, dan micro-interactions pada komponen penting"
+  seo:
+    - "Optimasi meta tags, sitemap.xml, robots.txt, Schema.org"
+  maintainability:
+    - "Gunakan komponen modular dari shadcn/ui"
+    - "Dokumentasi singkat di README tentang struktur folder & penggunaan komponen"
+  security:
+    - "Implementasi HTTPS (SSL/TLS)"
+    - "Proteksi dari SEO injection dan XSS"
+
+tech_stack:
+  frontend:
+    framework: "AstroJs"
+    styling: "TailwindCSS"
+    ui_kit: "shadcn/ui (komponen: Navbar, Footer, Button, Card, Modal, ThemeToggle, dsb.)"
+    animation: "Framer Motion, GSAP, atau Lottie (opsional)"
+  backend:
+    type: "Static Site (SSG)"
+  deployment:
+    platform:
+      - "Vercel"
+      - "Netlify"
+      - "Cloudflare Pages"
+  database:
+    type: "Tidak diperlukan (konten berbasis file/MDX)"
+    optional: "Supabase/Firebase untuk blog dinamis"
+  ci_cd:
+    - "GitHub Actions untuk build & deploy otomatis"
+  analytics:
+    - "Google Analytics 4"
+    - "Plausible/Umami (privacy-friendly option)"
+
+content_structure:
+  - section: "Home"
+    elements: ["Hero Section", "Intro Text", "CTA Button"]
+  - section: "About"
+    elements: ["Bio", "Experience Timeline", "Skill Cards"]
+  - section: "Portfolio"
+    elements: ["Project Cards", "Category Filter", "Demo/GitHub Links"]
+  - section: "Blog"
+    elements: ["Article Cards", "Tag Filter", "Search Bar"]
+  - section: "Contact"
+    elements: ["Nomor Telepon", "Email", "Social Media Links", "CV Download"]
+
+acceptance_criteria:
+  - "Setiap halaman dibangun dengan komponen shadcn/ui + Tailwind"
+  - "Tampilan respo

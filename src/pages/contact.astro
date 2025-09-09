@@ -1,0 +1,11 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import ContactContainer from '@/components/contact/ContactContainer.tsx';
+---
+
+<MainLayout
+    title="Contact"
+    description="Get in touch with Zentaza for collaborations, projects, or inquiries"
+>
+    <ContactContainer client:idle />
+</MainLayout>
