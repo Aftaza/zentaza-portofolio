@@ -261,7 +261,7 @@ const AnimatedProfileCard: React.FC<ExtendedProfileCardProps> = ({
                                 src={image}
                                 alt={title}
                                 className={variant === 'circular' 
-                                    ? "w-full h-full object-cover object-top scale-125 translate-y-4 md:translate-y-8" 
+                                    ? "w-full h-full object-cover object-top scale-125 translate-y-4 md:translate-y-5" 
                                     : "w-full h-full object-cover"
                                 }
                                 whileHover={{

@@ -61,7 +61,7 @@ export const CertificationsSection: React.FC<CertificationsMarqueeProps> = ({
                     transformStyle: 'preserve-3d',
                 }}
             >
-                <div className="grid grid-cols-4 gap-32 w-full pointer-events-auto">
+                <div className="grid grid-cols-4 gap-64 md:gap-40 w-full pointer-events-auto">
                     {certificationGroups.map((certsInGroup, idx) => (
                         <motion.div
                             key={`column-${idx}`}
